@@ -18,22 +18,22 @@
         android:title="@string/main_btm_nav_search_title" />
 
     <item
+        android:id="@+id/menu_main_btm_nav_plus"
+        android:icon="@drawable/ic_plus"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:title="@string/main_btm_nav_plus_title" />
+
+    <item
         android:id="@+id/menu_main_btm_nav_reels"
-        android:icon="@drawable/ic_nav_reels"
+        android:icon="@drawable/ic_reels"
         app:showAsAction="always"
         android:enabled="true"
         android:title="@string/main_btm_nav_reels_title" />
 
     <item
-        android:id="@+id/menu_main_btm_nav_shop"
-        android:icon="@drawable/main_btm_nav_shop"
-        app:showAsAction="always"
-        android:enabled="true"
-        android:title="@string/main_btm_nav_shop_title" />
-
-    <item
         android:id="@+id/menu_main_btm_nav_profile"
-        android:icon="@drawable/ic_nav_profile"
+        android:icon="@drawable/ic_profile"
         app:showAsAction="always"
         android:enabled="true"
         android:title="@string/main_btm_nav_profile_title" />

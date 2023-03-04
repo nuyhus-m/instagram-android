@@ -27,10 +27,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     R.id.menu_main_btm_nav_search -> {
 
                     }
-                    R.id.menu_main_btm_nav_reels -> {
+                    R.id.menu_main_btm_nav_plus -> {
 
                     }
-                    R.id.menu_main_btm_nav_shop -> {
+                    R.id.menu_main_btm_nav_reels -> {
 
                     }
                     R.id.menu_main_btm_nav_profile -> {

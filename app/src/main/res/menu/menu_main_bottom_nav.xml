@@ -33,7 +33,7 @@
 
     <item
         android:id="@+id/menu_main_btm_nav_profile"
-        android:icon="@drawable/ic_profile"
+        android:icon="@drawable/ex_profile"
         app:showAsAction="always"
         android:enabled="true"
         android:title="@string/main_btm_nav_profile_title" />

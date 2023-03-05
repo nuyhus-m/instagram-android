@@ -8,7 +8,7 @@ import com.softsquared.template.kotlin.databinding.ItemHomePostPagerBinding
 
 class HomePostPagerAdapter : RecyclerView.Adapter<HomePostPagerAdapter.HomePostPagerViewHolder>() {
 
-    private val photoList = listOf(R.drawable.ex, R.drawable.ex, R.drawable.ex)
+    private val photoList = listOf(R.drawable.ex_photo, R.drawable.ex_photo, R.drawable.ex_photo)
 
     inner class HomePostPagerViewHolder(private val homePostPagerItemBinding : ItemHomePostPagerBinding)
         : RecyclerView.ViewHolder(homePostPagerItemBinding.root){

@@ -8,7 +8,7 @@ import com.softsquared.template.kotlin.databinding.ItemHomeStoryBinding
 
 class HomeStoryAdapter : RecyclerView.Adapter<HomeStoryAdapter.HomeStoryViewHolder>() {
 
-    private val nicknameList = listOf("aaaa", "bbbb", "cccc")
+    private val nicknameList = listOf("aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff")
 
     inner class HomeStoryViewHolder(private val homeStoryItemBinding : ItemHomeStoryBinding)
         : RecyclerView.ViewHolder(homeStoryItemBinding.root) {

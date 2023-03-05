@@ -14,7 +14,7 @@ class HomePostAdapter : RecyclerView.Adapter<HomePostAdapter.HomePostViewHolder>
     inner class HomePostViewHolder(private val homePostItemBinding: ItemHomePostBinding) :
         RecyclerView.ViewHolder(homePostItemBinding.root) {
         fun bind(nickname: String) {
-            homePostItemBinding.itemHomePostNickname.text = nickname
+            homePostItemBinding.homePostNickname.text = nickname
 
             homePostItemBinding.homePostPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
             homePostItemBinding.homePostPager.adapter = HomePostPagerAdapter()

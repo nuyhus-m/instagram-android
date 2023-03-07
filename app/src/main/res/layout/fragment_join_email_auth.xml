@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blueForBackground"
-    tools:context=".src.start.join.JoinEmailFragment">
+    tools:context=".src.start.join.JoinEmailAuthFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="@string/joinEmail_title"
+            android:text="@string/joinEmailAuth_title"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:text="@string/joinEmail_sub_title"
+            android:text="@string/joinEmailAuth_sub_title"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -63,16 +63,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:hint="@string/joinEmail_et"
+                android:hint="@string/joinEmailAuth_et"
+                android:inputType="number"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:textCursorDrawable="@drawable/background_et_cursor"
-                android:textSize="14sp"
-                android:inputType="textEmailAddress"/>
+                android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/join_email_btn_next"
+            android:id="@+id/join_email_auth_btn_next"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginBottom="10dp"
@@ -81,11 +81,11 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/join_email_btn_p_n"
+            android:id="@+id/join_email_auth_btn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/background_btn_transparent"
-            android:text="@string/joinEmail_btn_pn" />
+            android:text="@string/joinEmailAuth_btn" />
 
     </LinearLayout>
 

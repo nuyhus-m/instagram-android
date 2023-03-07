@@ -84,7 +84,8 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:textCursorDrawable="@drawable/background_et_cursor"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

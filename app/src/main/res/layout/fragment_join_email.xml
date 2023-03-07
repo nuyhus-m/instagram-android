@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blueForBackground"
-    tools:context=".src.start.join.JoinPNFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".src.start.join.JoinEmailFragment"
+    android:background="@color/blueForBackground">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="@string/joinPN_title"
+            android:text="@string/joinEmail_title"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:text="@string/joinPN_sub_title"
+            android:text="@string/joinEmail_sub_title"
             android:textColor="@color/black"
             android:textSize="12sp" />
 
@@ -63,12 +63,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:hint="@string/joinPN_et"
+                android:hint="@string/joinEmail_et"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:textCursorDrawable="@drawable/background_et_cursor"
                 android:textSize="14sp"
-                android:inputType="number"/>
+                android:inputType="textEmailAddress"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -81,11 +81,11 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/join_p_n_btn_email"
+            android:id="@+id/join_email_btn_p_n"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/background_btn_transparent"
-            android:text="@string/joinPN_btn_email" />
+            android:text="@string/joinEmail_btn_pn" />
 
     </LinearLayout>
 
@@ -101,4 +101,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

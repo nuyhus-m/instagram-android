@@ -10,15 +10,16 @@ class HomePostPagerAdapter : RecyclerView.Adapter<HomePostPagerAdapter.HomePostP
 
     private val photoList = listOf(R.drawable.ex_photo, R.drawable.ex_photo, R.drawable.ex_photo)
 
-    inner class HomePostPagerViewHolder(private val homePostPagerItemBinding : ItemHomePostPagerBinding)
-        : RecyclerView.ViewHolder(homePostPagerItemBinding.root){
-        fun bind(photo:Int) {
+    inner class HomePostPagerViewHolder(private val homePostPagerItemBinding: ItemHomePostPagerBinding) :
+        RecyclerView.ViewHolder(homePostPagerItemBinding.root) {
+        fun bind(photo: Int) {
             homePostPagerItemBinding.homePostPagerImg.setImageResource(photo)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomePostPagerViewHolder {
-        val binding = ItemHomePostPagerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemHomePostPagerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HomePostPagerViewHolder(binding)
     }
 

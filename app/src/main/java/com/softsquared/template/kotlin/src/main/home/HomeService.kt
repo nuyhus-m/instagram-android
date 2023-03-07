@@ -10,9 +10,10 @@ import retrofit2.Response
 
 class HomeService(val homeFragmentInterface: HomeFragmentInterface) {
 
-    fun tryGetUsers(){
-        val homeRetrofitInterface = ApplicationClass.sRetrofit.create(HomeRetrofitInterface::class.java)
-        homeRetrofitInterface.getUsers().enqueue(object : Callback<UserResponse>{
+    fun tryGetUsers() {
+        val homeRetrofitInterface =
+            ApplicationClass.sRetrofit.create(HomeRetrofitInterface::class.java)
+        homeRetrofitInterface.getUsers().enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 homeFragmentInterface.onGetUserSuccess(response.body() as UserResponse)
             }
@@ -23,17 +24,22 @@ class HomeService(val homeFragmentInterface: HomeFragmentInterface) {
         })
     }
 
-    fun tryPostSignUp(postSignUpRequest: PostSignUpRequest){
-        val homeRetrofitInterface = ApplicationClass.sRetrofit.create(HomeRetrofitInterface::class.java)
-        homeRetrofitInterface.postSignUp(postSignUpRequest).enqueue(object : Callback<SignUpResponse>{
-            override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {
-                homeFragmentInterface.onPostSignUpSuccess(response.body() as SignUpResponse)
-            }
+    fun tryPostSignUp(postSignUpRequest: PostSignUpRequest) {
+        val homeRetrofitInterface =
+            ApplicationClass.sRetrofit.create(HomeRetrofitInterface::class.java)
+        homeRetrofitInterface.postSignUp(postSignUpRequest)
+            .enqueue(object : Callback<SignUpResponse> {
+                override fun onResponse(
+                    call: Call<SignUpResponse>,
+                    response: Response<SignUpResponse>
+                ) {
+                    homeFragmentInterface.onPostSignUpSuccess(response.body() as SignUpResponse)
+                }
 
-            override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
-                homeFragmentInterface.onPostSignUpFailure(t.message ?: "통신 오류")
-            }
-        })
+                override fun onFailure(call: Call<SignUpResponse>, t: Throwable) {
+                    homeFragmentInterface.onPostSignUpFailure(t.message ?: "통신 오류")
+                }
+            })
     }
 
 }

@@ -8,7 +8,7 @@ import retrofit2.http.*
 
 interface HomeRetrofitInterface {
     @GET("/template/users")
-    fun getUsers() : Call<UserResponse>
+    fun getUsers(): Call<UserResponse>
 
     @POST("/template/users")
     fun postSignUp(@Body params: PostSignUpRequest): Call<SignUpResponse>

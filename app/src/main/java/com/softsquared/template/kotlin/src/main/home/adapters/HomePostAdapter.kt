@@ -1,6 +1,5 @@
 package com.softsquared.template.kotlin.src.main.home.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +19,7 @@ class HomePostAdapter : RecyclerView.Adapter<HomePostAdapter.HomePostViewHolder>
             homePostItemBinding.homePostPager.adapter = HomePostPagerAdapter()
 
             homePostItemBinding.indicator.setViewPager(homePostItemBinding.homePostPager)
-            homePostItemBinding.indicator.createIndicators(3,0)
+            homePostItemBinding.indicator.createIndicators(3, 0)
         }
     }
 

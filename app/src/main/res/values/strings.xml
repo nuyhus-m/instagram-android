@@ -19,8 +19,12 @@
     <string name="home_et_id">아이디를 입력하세요.</string>
     <string name="home_et_pw">비밀번호를 입력하세요.</string>
 
-    <!-- MyPage -->
-    <string name="my_page_tv_counter">%1d 번 눌렀습니다.</string>
-    <string name="my_page_btn_counting_number">숫자 세기</string>
+    <!-- Login -->
+    <string name="login_language_ko">한국어</string>
+    <string name="login_et_id">사용자 이름, 이메일 주소 또는 휴대폰 번호</string>
+    <string name="login_et_pw">비밀번호</string>
+    <string name="login_btn_login">로그인</string>
+    <string name="login_pw_text">비밀번호를 잊으셨나요?</string>
+    <string name="login_btn_join">새 계정 만들기</string>
 
 </resources>

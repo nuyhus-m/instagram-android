@@ -7,7 +7,6 @@ import android.os.Looper
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivitySplashBinding
 import com.softsquared.template.kotlin.src.login.LoginActivity
-import com.softsquared.template.kotlin.src.main.MainActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {

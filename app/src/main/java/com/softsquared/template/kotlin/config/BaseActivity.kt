@@ -15,6 +15,9 @@ abstract class BaseActivity<B : ViewBinding>(private val inflate: (LayoutInflate
         private set
     lateinit var mLoadingDialog: LoadingDialog
 
+    val t = true
+    val f = false
+
     // 뷰 바인딩 객체를 받아서 inflate해서 화면을 만들어줌.
     // 즉 매번 onCreate에서 setContentView를 하지 않아도 됨.
     override fun onCreate(savedInstanceState: Bundle?) {

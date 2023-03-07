@@ -8,6 +8,7 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityStartBinding
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
+import com.softsquared.template.kotlin.src.start.join.JoinPNFragment
 import com.softsquared.template.kotlin.src.start.login.LoginFragment
 
 class StartActivity : BaseActivity<ActivityStartBinding>(ActivityStartBinding::inflate) {
@@ -17,7 +18,7 @@ class StartActivity : BaseActivity<ActivityStartBinding>(ActivityStartBinding::i
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        fragmentController(resources.getString(R.string.login_fragment), t, t)
+        fragmentController(resources.getString(R.string.login_fragment), t, f)
     }
 
     fun fragmentController(name: String, add: Boolean, animate: Boolean) {
@@ -25,6 +26,9 @@ class StartActivity : BaseActivity<ActivityStartBinding>(ActivityStartBinding::i
         when (name) {
             resources.getString(R.string.login_fragment) -> {
                 currentFragment = LoginFragment()
+            }
+            resources.getString(R.string.join_p_n_fragment) -> {
+                currentFragment = JoinPNFragment()
             }
         }
 

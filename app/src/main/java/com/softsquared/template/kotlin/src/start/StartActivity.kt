@@ -42,6 +42,9 @@ class StartActivity : BaseActivity<ActivityStartBinding>(ActivityStartBinding::i
             resources.getString(R.string.join_name_fragment) -> {
                 currentFragment = JoinNameFragment()
             }
+            resources.getString(R.string.join_password_fragment) -> {
+                currentFragment = JoinPasswordFragment()
+            }
         }
 
         val trans = supportFragmentManager.beginTransaction()

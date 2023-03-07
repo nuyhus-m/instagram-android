@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.BaseFragment
-import com.softsquared.template.kotlin.databinding.FragmentJoinNameBinding
+import com.softsquared.template.kotlin.databinding.FragmentJoinPasswordBinding
 import com.softsquared.template.kotlin.src.start.StartActivity
 
-class JoinNameFragment : BaseFragment<FragmentJoinNameBinding>(FragmentJoinNameBinding::bind, R.layout.fragment_join_name) {
+class JoinPasswordFragment : BaseFragment<FragmentJoinPasswordBinding>(FragmentJoinPasswordBinding::bind, R.layout.fragment_join_password) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -19,10 +19,10 @@ class JoinNameFragment : BaseFragment<FragmentJoinNameBinding>(FragmentJoinNameB
 
         binding.toolbar.navigationIcon = requireContext().getDrawable(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
         binding.toolbar.setNavigationOnClickListener {
-            act.fragmentRemoveBackStack(resources.getString(R.string.join_name_fragment))
+            act.fragmentRemoveBackStack(resources.getString(R.string.join_password_fragment))
         }
-        binding.joinNameBtnNext.setOnClickListener {
-            act.fragmentController(resources.getString(R.string.join_password_fragment), t, t)
+        binding.joinPasswordBtnNext.setOnClickListener {
+
         }
     }
 }

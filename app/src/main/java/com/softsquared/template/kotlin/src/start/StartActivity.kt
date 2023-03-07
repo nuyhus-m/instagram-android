@@ -48,6 +48,12 @@ class StartActivity : BaseActivity<ActivityStartBinding>(ActivityStartBinding::i
             resources.getString(R.string.join_nick_name_fragment) -> {
                 currentFragment = JoinNickNameFragment()
             }
+            resources.getString(R.string.join_photo_fragment) -> {
+                currentFragment = JoinPhotoFragment()
+            }
+            resources.getString(R.string.join_welcome_fragment) -> {
+                currentFragment = JoinWelcomeFragment()
+            }
         }
 
         val trans = supportFragmentManager.beginTransaction()

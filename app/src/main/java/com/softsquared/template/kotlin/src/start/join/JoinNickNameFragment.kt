@@ -22,7 +22,7 @@ class JoinNickNameFragment : BaseFragment<FragmentJoinNickNameBinding>(FragmentJ
             act.fragmentRemoveBackStack(resources.getString(R.string.join_nick_name_fragment))
         }
         binding.joinNickNameBtnNext.setOnClickListener {
-
+            act.fragmentController(resources.getString(R.string.join_photo_fragment), t, t)
         }
     }
 }

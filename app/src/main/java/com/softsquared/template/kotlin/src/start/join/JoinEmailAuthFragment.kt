@@ -15,14 +15,14 @@ class JoinEmailAuthFragment : BaseFragment<FragmentJoinEmailAuthBinding>(Fragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val act =activity as StartActivity
+        val act = activity as StartActivity
 
         binding.toolbar.navigationIcon = requireContext().getDrawable(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
         binding.toolbar.setNavigationOnClickListener {
             act.fragmentRemoveBackStack(resources.getString(R.string.join_email_auth_fragment))
         }
         binding.joinEmailAuthBtnNext.setOnClickListener {
-
+            act.fragmentController(resources.getString(R.string.join_name_fragment), t, t)
         }
     }
 }

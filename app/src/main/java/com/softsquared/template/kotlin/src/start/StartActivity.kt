@@ -8,10 +8,7 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityStartBinding
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
-import com.softsquared.template.kotlin.src.start.join.JoinEmailAuthFragment
-import com.softsquared.template.kotlin.src.start.join.JoinEmailFragment
-import com.softsquared.template.kotlin.src.start.join.JoinPNAuthFragment
-import com.softsquared.template.kotlin.src.start.join.JoinPNFragment
+import com.softsquared.template.kotlin.src.start.join.*
 import com.softsquared.template.kotlin.src.start.login.LoginFragment
 
 class StartActivity : BaseActivity<ActivityStartBinding>(ActivityStartBinding::inflate) {
@@ -41,6 +38,9 @@ class StartActivity : BaseActivity<ActivityStartBinding>(ActivityStartBinding::i
             }
             resources.getString(R.string.join_p_n_auth_fragment) -> {
                 currentFragment = JoinPNAuthFragment()
+            }
+            resources.getString(R.string.join_name_fragment) -> {
+                currentFragment = JoinNameFragment()
             }
         }
 

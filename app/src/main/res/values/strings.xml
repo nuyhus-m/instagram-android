@@ -80,6 +80,8 @@
     <string name="profile_following_text">팔로잉</string>
     <string name="profile_btn1">프로필 편집</string>
     <string name="profile_btn2">프로필 공유</string>
+    <string name="profile_story_title">스토리 하이라이트</string>
+    <string name="profile_story_sub_title">좋아하는 스토리를 프로필에 보관해보세요</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

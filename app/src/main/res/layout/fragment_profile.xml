@@ -215,6 +215,19 @@
                     android:src="@drawable/ic_profile_btn_find_unselected" />
 
             </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/profile_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIconTint="@color/grayForTab"
+                app:tabIndicatorColor="@color/black" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/profile_pages"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

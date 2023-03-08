@@ -16,5 +16,6 @@
     <color name="blueForBtn">#0064E0</color>
     <color name="grayForBackground">#EFEFEF</color>
     <color name="grayForBtn">#D4D4D4</color>
+    <color name="grayForTab">#989898</color>
 
 </resources>

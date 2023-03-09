@@ -22,7 +22,7 @@ class JoinPasswordFragment : BaseFragment<FragmentJoinPasswordBinding>(FragmentJ
             act.fragmentRemoveBackStack(resources.getString(R.string.join_password_fragment))
         }
         binding.joinPasswordBtnNext.setOnClickListener {
-            act.fragmentController(resources.getString(R.string.join_nick_name_fragment), t, t)
+            act.fragmentController(resources.getString(R.string.join_birth_day_fragment), t, t)
         }
     }
 }

@@ -12,6 +12,7 @@
     <string name="join_p_n_auth_fragment">joinPNAuth</string>
     <string name="join_name_fragment">joinName</string>
     <string name="join_password_fragment">joinPassword</string>
+    <string name="join_birth_day_fragment">joinBirthDay</string>
     <string name="join_nick_name_fragment">joinNickName</string>
     <string name="join_photo_fragment">joinPhoto</string>
     <string name="join_welcome_fragment">joinWelcome</string>
@@ -63,6 +64,13 @@
     <!-- JoinPassword -->
     <string name="joinPassword_title">6자 이상의 문자 또는 숫자로 비밀번호를 만드세요</string>
     <string name="joinPassword_sub_title">회원님의 이름, 휴대폰 번호 또는 이메일 주소는 사용할 수 없습니다.</string>
+    <!-- JoinBirthday -->
+    <string name="joinBirthDay_title">생년월일 입력</string>
+    <string name="joinBirthDay_sub_title">비즈니스, 반려동물 또는 기타 목적으로 이 계정을 만드는 경우에도 회원님의 실제 생년월일을 사용하세요. 이 생년월일 정보는 프로필에서 다른 사람에게 공개되지 않습니다. 왜 생년월일을 입력해야 하나요?</string>
+    <string name="joinBirthDay_et">%d년 %d월 %d일</string>
+    <string name="joinBirthDay_dialog_title">날짜 설정</string>
+    <string name="joinBirthDay_btn_no">취소</string>
+    <string name="joinBirthDay_btn_yes">설정</string>
     <!-- JoinNickName -->
     <string name="joinNickName_title">사용자 이름 만들기</string>
     <string name="joinNickName_sub_title">사용자 이름을 추가하거나 추천 이름을 사용하세요. 언제든지 변경할 수 있습니다.</string>

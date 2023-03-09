@@ -1,10 +1,14 @@
 package com.softsquared.template.kotlin.src.main.home.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.softsquared.template.kotlin.databinding.ItemHomePostBinding
+import com.softsquared.template.kotlin.src.comment.CommentActivity
+import com.softsquared.template.kotlin.src.main.home.HomeFragment
 
 class HomePostAdapter : RecyclerView.Adapter<HomePostAdapter.HomePostViewHolder>() {
 
@@ -26,7 +30,17 @@ class HomePostAdapter : RecyclerView.Adapter<HomePostAdapter.HomePostViewHolder>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomePostViewHolder {
         val binding =
             ItemHomePostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HomePostViewHolder(binding)
+        return HomePostViewHolder(binding).also {
+            binding.homePostComment.setOnClickListener {
+                startActivity(it.context, Intent(it.context, CommentActivity::class.java), null)
+            }
+            binding.homePostText.setOnClickListener {
+                startActivity(it.context, Intent(it.context, CommentActivity::class.java), null)
+            }
+            binding.homePostCommentText.setOnClickListener {
+                startActivity(it.context, Intent(it.context, CommentActivity::class.java), null)
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: HomePostViewHolder, position: Int) {

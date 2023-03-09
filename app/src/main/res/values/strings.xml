@@ -74,6 +74,7 @@
     <string name="joinPhoto_btn_skip">건너뛰기</string>
     <string name="joinWelcome_text1">%s님, Instagram에 오신 것을 환영합니다</string>
     <string name="joinWelcome_text2">이제 몇 가지 단계를 통해 이용 환경을 원하는 대로 설정해보세요</string>
+
     <!-- Profile -->
     <string name="profile_post_text">게시물</string>
     <string name="profile_follower_text">팔로워</string>
@@ -82,6 +83,10 @@
     <string name="profile_btn2">프로필 공유</string>
     <string name="profile_story_title">스토리 하이라이트</string>
     <string name="profile_story_sub_title">좋아하는 스토리를 프로필에 보관해보세요</string>
+
+    <!-- Comment -->
+    <string name="comment_toolbar_title">댓글</string>
+    <string name="comment_text">답글 달기</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivitySplashBinding
+import com.softsquared.template.kotlin.src.comment.CommentActivity
 import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.start.StartActivity
 

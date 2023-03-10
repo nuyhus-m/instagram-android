@@ -6,12 +6,14 @@ import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import com.google.android.material.textfield.TextInputEditText
 import com.softsquared.template.kotlin.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.DialogBirthdayBinding
 import com.softsquared.template.kotlin.databinding.DialogLoginErrorBinding
@@ -62,6 +64,11 @@ class LoginFragment :
 
     override fun onPostLoginSuccess(response: LoginResponse) {
         if(response.code == 1000){
+            val editor : SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putString("jwt", response.result.jwt)
+            editor.putInt("userId", response.result.userId)
+            editor.apply()
+
             startActivity(Intent(requireContext(), MainActivity::class.java))
             requireActivity().finish()
         } else {

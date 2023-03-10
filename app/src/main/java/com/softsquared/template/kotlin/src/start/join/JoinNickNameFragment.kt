@@ -48,6 +48,11 @@ class JoinNickNameFragment : BaseFragment<FragmentJoinNickNameBinding>(FragmentJ
 
     override fun onPostJoinSuccess(response: JoinResponse) {
         if(response.code == 1000){
+            val editor : SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putString("jwt", response.result.jwt)
+            editor.putInt("userId", response.result.userId)
+            editor.apply()
+
             val act = activity as StartActivity
             act.fragmentController(resources.getString(R.string.join_photo_fragment), t, t)
         }

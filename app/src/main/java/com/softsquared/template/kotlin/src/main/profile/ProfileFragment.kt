@@ -7,13 +7,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.softsquared.template.kotlin.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentProfileBinding
 import com.softsquared.template.kotlin.src.main.profile.adpaters.ProfilePagerAdapter
 import com.softsquared.template.kotlin.src.main.profile.adpaters.ProfileStoryAdapter
+import com.softsquared.template.kotlin.src.main.profile.models.ProfileResponse
 
 
-class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile) {
+class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::bind, R.layout.fragment_profile), ProfileFragmentInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,5 +41,17 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                 binding.profileStoryUp.setImageResource(R.drawable.ic_profile_story_up)
             }
         }
+
+        val jwt = ApplicationClass.sSharedPreferences.getString("jwt","default_jwt")!!
+        val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
+        ProfileService(this).tryGetProfile(jwt, userId)
+    }
+
+    override fun onGetProfileSuccess(response: ProfileResponse) {
+        binding.profileNickName.text = response.result.nickname
+    }
+
+    override fun onGetProfileFailure(message: String) {
+        showCustomToast("오류 : $message")
     }
 }

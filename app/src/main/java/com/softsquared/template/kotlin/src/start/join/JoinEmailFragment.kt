@@ -1,11 +1,13 @@
 package com.softsquared.template.kotlin.src.start.join
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.softsquared.template.kotlin.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentJoinEmailBinding
 import com.softsquared.template.kotlin.src.start.StartActivity
@@ -22,6 +24,11 @@ class JoinEmailFragment : BaseFragment<FragmentJoinEmailBinding>(FragmentJoinEma
             act.fragmentRemoveBackStack(resources.getString(R.string.join_email_fragment))
         }
         binding.joinEmailBtnNext.setOnClickListener {
+            val editor : SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putInt("type", 2)
+            editor.putString("email", binding.joinEmailEt.text.toString())
+            editor.apply()
+
             act.fragmentController(resources.getString(R.string.join_email_auth_fragment), t, t)
         }
         binding.joinEmailBtnPN.setOnClickListener {

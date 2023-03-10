@@ -23,6 +23,7 @@ class JoinPNFragment :
         }
         binding.joinPNBtnNext.setOnClickListener {
             val editor : SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putInt("type", 1)
             editor.putString("phoneNumber", binding.joinPNEt.text.toString())
             editor.apply()
 

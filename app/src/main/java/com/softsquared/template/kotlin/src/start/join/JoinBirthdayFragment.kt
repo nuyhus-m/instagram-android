@@ -2,12 +2,15 @@ package com.softsquared.template.kotlin.src.start.join
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.softsquared.template.kotlin.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.DialogBirthdayBinding
 import com.softsquared.template.kotlin.databinding.FragmentJoinBirthdayBinding
@@ -23,9 +26,6 @@ class JoinBirthdayFragment : BaseFragment<FragmentJoinBirthdayBinding>(FragmentJ
         binding.toolbar.navigationIcon = requireContext().getDrawable(androidx.appcompat.R.drawable.abc_ic_ab_back_material)
         binding.toolbar.setNavigationOnClickListener {
             act.fragmentRemoveBackStack(resources.getString(R.string.join_birth_day_fragment))
-        }
-        binding.joinBirthBtnNext.setOnClickListener {
-            act.fragmentController(resources.getString(R.string.join_nick_name_fragment), t, t)
         }
 
         var year = 2023
@@ -74,6 +74,24 @@ class JoinBirthdayFragment : BaseFragment<FragmentJoinBirthdayBinding>(FragmentJ
                 binding.joinBirthdayValue.text = resources.getString(R.string.joinBirthDay_et, year, month, day)
                 birthDayDialog.dismiss()
             }
+        }
+
+        binding.joinBirthBtnNext.setOnClickListener {
+            var monthString = "$month"
+            if(month < 10) {
+                monthString = "0${month}"
+            }
+
+            var dayString = "$day"
+            if(day < 10) {
+                dayString = "0${day}"
+            }
+
+            val editor : SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putString("birthDay", "${year}-${monthString}-${dayString}")
+            editor.apply()
+
+            act.fragmentController(resources.getString(R.string.join_nick_name_fragment), t, t)
         }
     }
 }

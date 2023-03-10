@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.softsquared.template.kotlin.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentJoinPNAuthBinding
 import com.softsquared.template.kotlin.src.start.StartActivity
@@ -14,6 +15,9 @@ class JoinPNAuthFragment : BaseFragment<FragmentJoinPNAuthBinding>(FragmentJoinP
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val pn = ApplicationClass.sSharedPreferences.getString("phoneNumber", "01000000000")
+        binding.joinPNAuthText.text = resources.getString(R.string.joinPNAuth_sub_title, pn)
 
         val act =activity as StartActivity
 

@@ -63,6 +63,7 @@ class LoginFragment :
     override fun onPostLoginSuccess(response: LoginResponse) {
         if(response.code == 1000){
             startActivity(Intent(requireContext(), MainActivity::class.java))
+            requireActivity().finish()
         } else {
             val errorDialog = Dialog(requireContext())
             val loginErrorDialogBinding : DialogLoginErrorBinding = DialogLoginErrorBinding.inflate(layoutInflater)

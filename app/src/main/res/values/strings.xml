@@ -37,6 +37,10 @@
     <string name="login_btn_login">로그인</string>
     <string name="login_pw_text">비밀번호를 잊으셨나요?</string>
     <string name="login_btn_join">새 계정 만들기</string>
+    <string name="login_error_title">잘못된 비밀번호</string>
+    <string name="login_error_message1">입력된 비밀번호가 올바르지 않습니다. 다시</string>
+    <string name="login_error_message2">시도하세요.</string>
+    <string name="login_error_btn_check">확인</string>
 
     <!-- Join -->
     <string name="join_btn_next">다음</string>

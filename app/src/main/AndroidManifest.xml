@@ -24,7 +24,8 @@
         <activity
             android:name=".src.start.StartActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

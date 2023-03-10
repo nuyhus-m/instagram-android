@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.softsquared.template.kotlin.R
@@ -49,6 +50,17 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
         binding.profileNickName.text = response.result.nickname
+        Glide.with(this)
+            .load(response.result.profile_image_url)
+            .into(binding.profileImg)
+        binding.profilePostNum.text = response.result.post_count.toString()
+        binding.profileFollowerNum.text = response.result.follower_count.toString()
+        binding.profileFollowingNum.text = response.result.following_count.toString()
+        if(response.result.introduce != null){
+            binding.profileIntroduce.text = response.result.introduce.toString()
+        } else {
+            binding.profileIntroduce.visibility = View.GONE
+        }
     }
 
     override fun onGetProfileFailure(message: String) {

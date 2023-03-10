@@ -79,7 +79,7 @@
                 android:layout_marginBottom="10dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/circleImageView2"
+                    android:id="@+id/profile_img"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
                     android:layout_marginStart="20dp"
@@ -97,7 +97,7 @@
                     android:layout_marginStart="40dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/circleImageView2"
+                    app:layout_constraintStart_toEndOf="@+id/profile_img"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
@@ -174,7 +174,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/profile_introduce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"

@@ -1,13 +1,18 @@
 package com.softsquared.template.kotlin.src.main
 
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityMainBinding
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragment
+import com.softsquared.template.kotlin.src.main.profile.ProfileFragmentInterface
+import com.softsquared.template.kotlin.src.main.profile.ProfileService
+import com.softsquared.template.kotlin.src.main.profile.models.ProfileResponse
 
-class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), ProfileFragmentInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +21,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             .commitAllowingStateLoss()
 
         binding.mainBtmNav.itemIconTintList = null
+
+        val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
+        ProfileService(this).tryGetProfile(userId)
 
         binding.mainBtmNav.run {
             setOnItemSelectedListener { item ->
@@ -44,5 +52,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             selectedItemId = R.id.menu_main_btm_nav_home
         }
+    }
+
+    override fun onGetProfileSuccess(response: ProfileResponse) {
+        Glide.with(this)
+            .load(response.result.profile_image_url)
+            .into(binding.mainBtmProfileImg)
+    }
+
+    override fun onGetProfileFailure(message: String) {
+        showCustomToast("오류 : $message")
     }
 }

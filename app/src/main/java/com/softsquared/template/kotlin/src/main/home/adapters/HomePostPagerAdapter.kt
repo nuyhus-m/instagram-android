@@ -3,17 +3,19 @@ package com.softsquared.template.kotlin.src.main.home.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.databinding.ItemHomePostPagerBinding
+import com.softsquared.template.kotlin.src.main.home.models.Photo
 
-class HomePostPagerAdapter : RecyclerView.Adapter<HomePostPagerAdapter.HomePostPagerViewHolder>() {
-
-    private val photoList = listOf(R.drawable.ex_photo, R.drawable.ex_photo, R.drawable.ex_photo)
+class HomePostPagerAdapter(val photos: List<Photo>) : RecyclerView.Adapter<HomePostPagerAdapter.HomePostPagerViewHolder>() {
 
     inner class HomePostPagerViewHolder(private val homePostPagerItemBinding: ItemHomePostPagerBinding) :
         RecyclerView.ViewHolder(homePostPagerItemBinding.root) {
-        fun bind(photo: Int) {
-            homePostPagerItemBinding.homePostPagerImg.setImageResource(photo)
+        fun bind(photo: Photo) {
+            Glide.with(itemView)
+                .load(photo.photoUrl)
+                .into(homePostPagerItemBinding.homePostPagerImg)
         }
     }
 
@@ -24,10 +26,10 @@ class HomePostPagerAdapter : RecyclerView.Adapter<HomePostPagerAdapter.HomePostP
     }
 
     override fun onBindViewHolder(holder: HomePostPagerViewHolder, position: Int) {
-        holder.bind(photoList[position])
+        holder.bind(photos[position])
     }
 
     override fun getItemCount(): Int {
-        return photoList.size
+        return photos.size
     }
 }

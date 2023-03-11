@@ -9,7 +9,6 @@ import retrofit2.http.Path
 interface ProfileRetrofitInterface {
     @GET("/app/users/{user_id}")
     fun getProfile(
-        @Header("X-ACCESS-TOKEN") accessToken: String,
         @Path("user_id") userId: Int
     ): Call<ProfileResponse>
 }

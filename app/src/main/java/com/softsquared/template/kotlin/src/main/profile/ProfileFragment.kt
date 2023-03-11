@@ -43,9 +43,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             }
         }
 
-        val jwt = ApplicationClass.sSharedPreferences.getString("jwt","default_jwt")!!
         val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
-        ProfileService(this).tryGetProfile(jwt, userId)
+        ProfileService(this).tryGetProfile(userId)
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {

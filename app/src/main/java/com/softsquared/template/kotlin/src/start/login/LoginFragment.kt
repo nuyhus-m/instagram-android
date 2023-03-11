@@ -65,7 +65,7 @@ class LoginFragment :
     override fun onPostLoginSuccess(response: LoginResponse) {
         if(response.code == 1000){
             val editor : SharedPreferences.Editor = ApplicationClass.sSharedPreferences.edit()
-            editor.putString("jwt", response.result.jwt)
+            editor.putString("X-ACCESS-TOKEN", response.result.jwt)
             editor.putInt("userId", response.result.userId)
             editor.apply()
 

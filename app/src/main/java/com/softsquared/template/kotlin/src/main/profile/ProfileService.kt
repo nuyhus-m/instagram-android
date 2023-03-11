@@ -8,10 +8,10 @@ import retrofit2.Response
 
 class ProfileService(val profileFragmentInterface: ProfileFragmentInterface) {
 
-    fun tryGetProfile(accessToken: String, userId: Int) {
+    fun tryGetProfile(userId: Int) {
         val profileRetrofitInterface =
             ApplicationClass.sRetrofit.create(ProfileRetrofitInterface::class.java)
-        profileRetrofitInterface.getProfile(accessToken, userId)
+        profileRetrofitInterface.getProfile(userId)
             .enqueue(object : Callback<ProfileResponse> {
                 override fun onResponse(
                     call: Call<ProfileResponse>,

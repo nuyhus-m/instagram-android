@@ -3,14 +3,17 @@ package com.softsquared.template.kotlin.src.main.profile.adpaters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.databinding.ItemProfilePostBinding
 
-class ProfilePostAdapter(private val postList: List<Int>) : RecyclerView.Adapter<ProfilePostAdapter.ProfilePostViewHolder>() {
+class ProfilePostAdapter(private val postList: List<String>) : RecyclerView.Adapter<ProfilePostAdapter.ProfilePostViewHolder>() {
 
     inner class ProfilePostViewHolder(private val profilePostItemBinding: ItemProfilePostBinding) :
         RecyclerView.ViewHolder(profilePostItemBinding.root) {
-        fun bind(post: Int) {
-            profilePostItemBinding.profilePostPhoto.setImageResource(post)
+        fun bind(post: String) {
+            Glide.with(itemView)
+                .load(post)
+                .into(profilePostItemBinding.profilePostPhoto)
         }
     }
 

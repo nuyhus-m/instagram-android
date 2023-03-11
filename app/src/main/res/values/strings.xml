@@ -25,10 +25,6 @@
     <string name="main_btm_nav_profile_title">프로필</string>
 
     <!-- Home -->
-    <string name="home_btn_try_get_http_method">GET API 보내기</string>
-    <string name="home_btn_try_post_http_method">POST API 보내기</string>
-    <string name="home_et_id">아이디를 입력하세요.</string>
-    <string name="home_et_pw">비밀번호를 입력하세요.</string>
 
     <!-- Login -->
     <string name="login_language_ko">한국어</string>

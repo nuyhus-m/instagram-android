@@ -1,12 +1,15 @@
 package com.softsquared.template.kotlin.src.main.home.adapters
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.databinding.ItemHomePostBinding
 import com.softsquared.template.kotlin.src.comment.CommentActivity
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
@@ -22,6 +25,18 @@ class HomePostAdapter(val postList: List<ResultHomePost>) : RecyclerView.Adapter
                 .into(homePostItemBinding.homePostProfile)
 
             homePostItemBinding.homePostNickname.text = post.profileName
+            if(post.likeCount == 0) {
+                homePostItemBinding.homePostHeartLayout.visibility = View.GONE
+            } else {
+                homePostItemBinding.homePostHeartText.text = "좋아요 ${post.likeCount}개"
+            }
+            homePostItemBinding.homePostNickNameText.text = post.profileName
+            homePostItemBinding.homePostContent.text = post.content
+            homePostItemBinding.homePostCommentText.text = "댓글 모두 보기"
+            val month = post.createdAt.substring(5,7).toInt()
+            val day = post.createdAt.substring(8,10).toInt()
+
+            homePostItemBinding.homePostDate.text = "${month}월 ${day}일"
 
             homePostItemBinding.homePostPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
             homePostItemBinding.homePostPager.adapter = HomePostPagerAdapter(post.photos)
@@ -38,7 +53,7 @@ class HomePostAdapter(val postList: List<ResultHomePost>) : RecyclerView.Adapter
             binding.homePostComment.setOnClickListener {
                 startActivity(it.context, Intent(it.context, CommentActivity::class.java), null)
             }
-            binding.homePostText.setOnClickListener {
+            binding.homePostContent.setOnClickListener {
                 startActivity(it.context, Intent(it.context, CommentActivity::class.java), null)
             }
             binding.homePostCommentText.setOnClickListener {

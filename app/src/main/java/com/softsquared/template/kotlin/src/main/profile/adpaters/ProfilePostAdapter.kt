@@ -5,18 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.softsquared.template.kotlin.databinding.ItemProfilePostBinding
 
-class ProfilePostAdapter : RecyclerView.Adapter<ProfilePostAdapter.ProfilePostViewHolder>() {
-
-    private val postList = listOf(
-        com.softsquared.template.kotlin.R.drawable.ex_photo,
-        com.softsquared.template.kotlin.R.drawable.ex_photo,
-        com.softsquared.template.kotlin.R.drawable.ex_photo,
-        com.softsquared.template.kotlin.R.drawable.ex_photo,
-        com.softsquared.template.kotlin.R.drawable.ex_photo,
-        com.softsquared.template.kotlin.R.drawable.ex_photo,
-        com.softsquared.template.kotlin.R.drawable.ex_photo,
-        com.softsquared.template.kotlin.R.drawable.ex_photo
-    )
+class ProfilePostAdapter(private val postList: List<Int>) : RecyclerView.Adapter<ProfilePostAdapter.ProfilePostViewHolder>() {
 
     inner class ProfilePostViewHolder(private val profilePostItemBinding: ItemProfilePostBinding) :
         RecyclerView.ViewHolder(profilePostItemBinding.root) {

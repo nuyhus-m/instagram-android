@@ -11,7 +11,13 @@ import com.softsquared.template.kotlin.databinding.FragmentProfilePage2Binding
 
 class ProfilePage2Fragment : BaseFragment<FragmentProfilePage2Binding>(FragmentProfilePage2Binding::bind, R.layout.fragment_profile_page2) {
 
+    private val postList = listOf<Int>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (postList.isNotEmpty()) {
+            binding.profilePage2Zero.visibility = View.GONE
+        }
     }
 }

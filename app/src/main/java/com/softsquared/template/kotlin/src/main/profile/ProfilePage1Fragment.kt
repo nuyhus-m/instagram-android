@@ -13,10 +13,15 @@ class ProfilePage1Fragment : BaseFragment<FragmentProfilePage1Binding>(
     R.layout.fragment_profile_page1
 ) {
 
+    private val postList = listOf<Int>(R.drawable.ex_photo)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (postList.isNotEmpty()) {
+            binding.profilePage1Zero.visibility = View.GONE
+        }
         binding.profilePage1Rv.layoutManager = GridLayoutManager(requireContext(), 3)
-        binding.profilePage1Rv.adapter = ProfilePostAdapter()
+        binding.profilePage1Rv.adapter = ProfilePostAdapter(postList)
     }
 }

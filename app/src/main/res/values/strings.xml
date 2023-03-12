@@ -105,6 +105,11 @@
     <string name="comment_input">댓글 추가...</string>
     <string name="comment_input_btn">게시</string>
 
+    <!-- List -->
+    <string name="list_tab_follower">팔로워 %d명</string>
+    <string name="list_tab_following">팔로잉 %d명</string>
+    <string name="follower_btn_delete">삭제</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

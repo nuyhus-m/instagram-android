@@ -7,6 +7,7 @@ import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityMainBinding
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
+import com.softsquared.template.kotlin.src.main.list.ListFragment
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragment
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragmentInterface
 import com.softsquared.template.kotlin.src.main.profile.ProfileService
@@ -30,7 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 when (item.itemId) {
                     R.id.menu_main_btm_nav_home -> {
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, HomeFragment())
+                            .replace(R.id.main_frm, ListFragment())
                             .commitAllowingStateLoss()
                     }
                     R.id.menu_main_btm_nav_search -> {

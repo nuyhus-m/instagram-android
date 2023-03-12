@@ -54,6 +54,7 @@ class HomePostAdapter(val postList: List<ResultHomePost>) : RecyclerView.Adapter
                 intent.putExtra("photo", postList[holder.adapterPosition].profilePicture)
                 intent.putExtra("nickName", postList[holder.adapterPosition].profileName)
                 intent.putExtra("content", postList[holder.adapterPosition].content)
+                intent.putExtra("postId", postList[holder.adapterPosition].postId)
                 startActivity(it.context, intent, null)
             }
             binding.homePostContent.setOnClickListener {
@@ -61,6 +62,7 @@ class HomePostAdapter(val postList: List<ResultHomePost>) : RecyclerView.Adapter
                 intent.putExtra("photo", postList[holder.adapterPosition].profilePicture)
                 intent.putExtra("nickName", postList[holder.adapterPosition].profileName)
                 intent.putExtra("content", postList[holder.adapterPosition].content)
+                intent.putExtra("postId", postList[holder.adapterPosition].postId)
                 startActivity(it.context, intent, null)
             }
             binding.homePostCommentText.setOnClickListener {
@@ -68,6 +70,7 @@ class HomePostAdapter(val postList: List<ResultHomePost>) : RecyclerView.Adapter
                 intent.putExtra("photo", postList[holder.adapterPosition].profilePicture)
                 intent.putExtra("nickName", postList[holder.adapterPosition].profileName)
                 intent.putExtra("content", postList[holder.adapterPosition].content)
+                intent.putExtra("postId", postList[holder.adapterPosition].postId)
                 startActivity(it.context, intent, null)
             }
         }

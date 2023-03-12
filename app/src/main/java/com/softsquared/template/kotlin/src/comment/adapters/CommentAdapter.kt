@@ -3,14 +3,23 @@ package com.softsquared.template.kotlin.src.comment.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.databinding.ItemCommentBinding
+import com.softsquared.template.kotlin.src.comment.models.ResultComment
 
-class CommentAdapter : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
+class CommentAdapter(val commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
 
     inner class CommentViewHolder(private val commentItemBinding: ItemCommentBinding)
         :RecyclerView.ViewHolder(commentItemBinding.root){
-            fun bind() {
-
+            fun bind(comment: ResultComment) {
+                Glide.with(itemView)
+                    .load(comment.profilePicture)
+                    .into(commentItemBinding.commentPhoto)
+                commentItemBinding.commentProfileName.text = comment.profileName
+                commentItemBinding.commentContent.text = comment.comment
+                if (comment.likeCount != 0) {
+                    commentItemBinding.commentHeartNum.text = comment.likeCount.toString()
+                }
             }
     }
 
@@ -20,10 +29,10 @@ class CommentAdapter : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(commentList[position])
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return commentList.size
     }
 }

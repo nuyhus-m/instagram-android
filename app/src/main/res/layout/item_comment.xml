@@ -26,10 +26,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/comment_photo"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ex_photo"
+            android:src="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/comment_profile_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -56,7 +56,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/comment_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -83,17 +83,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/comment_heart_ic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_post_heart"
             app:tint="@color/grayForTab" />
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/comment_heart_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             android:textSize="12sp" />
     </LinearLayout>
 

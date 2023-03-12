@@ -6,8 +6,9 @@ import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityCommentBinding
 import com.softsquared.template.kotlin.src.comment.adapters.CommentAdapter
+import com.softsquared.template.kotlin.src.comment.models.CommentResponse
 
-class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBinding::inflate) {
+class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBinding::inflate), CommentFragmentInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,9 +25,17 @@ class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBind
         binding.commentParentNickName.text = nickName
         val content = intent.getStringExtra("content")
         binding.commentParentContent.text = content
+        val postId = intent.getIntExtra("postId", -1)
+        CommentService(this).tryGetComments(postId)
 
+    }
 
+    override fun onGetCommentsSuccess(response: CommentResponse) {
         binding.commentRv.layoutManager = LinearLayoutManager(this)
-        binding.commentRv.adapter = CommentAdapter()
+        binding.commentRv.adapter = CommentAdapter(response.result)
+    }
+
+    override fun onGetCommentsFailure(message: String) {
+        showCustomToast("오류 : $message")
     }
 }

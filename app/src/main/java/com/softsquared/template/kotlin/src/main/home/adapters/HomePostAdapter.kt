@@ -35,7 +35,6 @@ class HomePostAdapter(val postList: List<ResultHomePost>) : RecyclerView.Adapter
             homePostItemBinding.homePostCommentText.text = "댓글 모두 보기"
             val month = post.createdAt.substring(5,7).toInt()
             val day = post.createdAt.substring(8,10).toInt()
-
             homePostItemBinding.homePostDate.text = "${month}월 ${day}일"
 
             homePostItemBinding.homePostPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
@@ -49,15 +48,27 @@ class HomePostAdapter(val postList: List<ResultHomePost>) : RecyclerView.Adapter
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomePostViewHolder {
         val binding =
             ItemHomePostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HomePostViewHolder(binding).also {
+        return HomePostViewHolder(binding).also { holder ->
             binding.homePostComment.setOnClickListener {
-                startActivity(it.context, Intent(it.context, CommentActivity::class.java), null)
+                val intent = Intent(it.context, CommentActivity::class.java)
+                intent.putExtra("photo", postList[holder.adapterPosition].profilePicture)
+                intent.putExtra("nickName", postList[holder.adapterPosition].profileName)
+                intent.putExtra("content", postList[holder.adapterPosition].content)
+                startActivity(it.context, intent, null)
             }
             binding.homePostContent.setOnClickListener {
-                startActivity(it.context, Intent(it.context, CommentActivity::class.java), null)
+                val intent = Intent(it.context, CommentActivity::class.java)
+                intent.putExtra("photo", postList[holder.adapterPosition].profilePicture)
+                intent.putExtra("nickName", postList[holder.adapterPosition].profileName)
+                intent.putExtra("content", postList[holder.adapterPosition].content)
+                startActivity(it.context, intent, null)
             }
             binding.homePostCommentText.setOnClickListener {
-                startActivity(it.context, Intent(it.context, CommentActivity::class.java), null)
+                val intent = Intent(it.context, CommentActivity::class.java)
+                intent.putExtra("photo", postList[holder.adapterPosition].profilePicture)
+                intent.putExtra("nickName", postList[holder.adapterPosition].profileName)
+                intent.putExtra("content", postList[holder.adapterPosition].content)
+                startActivity(it.context, intent, null)
             }
         }
     }

@@ -1,16 +1,25 @@
 package com.softsquared.template.kotlin.src.main.list.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.databinding.ItemFollowerBinding
+import com.softsquared.template.kotlin.src.main.list.models.Follower
 
-class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
+class FollowerAdapter(private val followerList: List<Follower>) : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>() {
 
-    inner class FollowerViewHolder(val followerItemBinding: ItemFollowerBinding) :
+    inner class FollowerViewHolder(private val followerItemBinding: ItemFollowerBinding) :
         RecyclerView.ViewHolder(followerItemBinding.root) {
-        fun bind() {
-
+        fun bind(follower: Follower) {
+            if(follower.story_status == 0){
+                followerItemBinding.followerPhotoRing.visibility = View.INVISIBLE
+            }
+            Glide.with(itemView)
+                .load(follower.profile_image_url)
+                .into(followerItemBinding.followerPhoto)
+            followerItemBinding.followerNickName.text = follower.nickname
         }
     }
 
@@ -20,10 +29,10 @@ class FollowerAdapter : RecyclerView.Adapter<FollowerAdapter.FollowerViewHolder>
     }
 
     override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(followerList[position])
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return followerList.size
     }
 }

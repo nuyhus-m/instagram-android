@@ -3,6 +3,7 @@ package com.softsquared.template.kotlin.src.comment
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityCommentBinding
 import com.softsquared.template.kotlin.src.comment.adapters.CommentAdapter
@@ -28,6 +29,10 @@ class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBind
         val postId = intent.getIntExtra("postId", -1)
         CommentService(this).tryGetComments(postId)
 
+        val profilePhoto = ApplicationClass.sSharedPreferences.getString("profilePhoto", null)
+        Glide.with(this)
+            .load(profilePhoto)
+            .into(binding.commentInputPhoto)
     }
 
     override fun onGetCommentsSuccess(response: CommentResponse) {

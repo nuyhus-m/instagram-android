@@ -55,6 +55,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
+        val editor = ApplicationClass.sSharedPreferences.edit()
+        editor.putString("profilePhoto", response.result.profile_image_url)
+        editor.apply()
+
         Glide.with(this)
             .load(response.result.profile_image_url)
             .into(binding.mainBtmProfileImg)

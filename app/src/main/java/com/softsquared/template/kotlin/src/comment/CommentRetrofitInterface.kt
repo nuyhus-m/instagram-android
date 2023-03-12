@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface CommentRetrofitInterface {
-    @GET("/app/posts/comment/{post-id}")
+    @GET("/app/posts/comments/{post-id}")
     fun getComments(@Path("post-id") postId: Int): Call<CommentResponse>
 }

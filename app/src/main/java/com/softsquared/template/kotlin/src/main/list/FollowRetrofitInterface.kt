@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface FollowerRetrofitInterface {
+interface FollowRetrofitInterface {
     @GET("/app/follows/followers")
     fun getFollowers(@Query("user-id") userId: Int): Call<FollowerResponse>
 }

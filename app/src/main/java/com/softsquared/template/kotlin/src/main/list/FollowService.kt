@@ -5,13 +5,12 @@ import com.softsquared.template.kotlin.src.main.list.models.FollowerResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 
-class FollowerService(val followerFragmentInterface: FollowerFragmentInterface) {
+class FollowService(val followerFragmentInterface: FollowFragmentInterface) {
 
     fun tryGetFollowers(userId: Int) {
         val followerRetrofitInterface =
-            ApplicationClass.sRetrofit.create(FollowerRetrofitInterface::class.java)
+            ApplicationClass.sRetrofit.create(FollowRetrofitInterface::class.java)
         followerRetrofitInterface.getFollowers(userId).enqueue(object : Callback<FollowerResponse>{
             override fun onResponse(
                 call: Call<FollowerResponse>,

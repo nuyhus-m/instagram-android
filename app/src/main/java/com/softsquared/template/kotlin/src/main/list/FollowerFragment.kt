@@ -9,6 +9,7 @@ import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentFollowerBinding
 import com.softsquared.template.kotlin.src.main.list.adapters.FollowerAdapter
 import com.softsquared.template.kotlin.src.main.list.models.FollowerResponse
+import com.softsquared.template.kotlin.src.main.list.models.FollowingResponse
 
 class FollowerFragment : BaseFragment<FragmentFollowerBinding>(FragmentFollowerBinding::bind, R.layout.fragment_follower), FollowFragmentInterface {
 
@@ -20,15 +21,19 @@ class FollowerFragment : BaseFragment<FragmentFollowerBinding>(FragmentFollowerB
     }
 
     override fun onGetFollowersSuccess(response: FollowerResponse) {
-        val editor = ApplicationClass.sSharedPreferences.edit()
-        editor.putInt("followerCount", response.result.follower_count)
-        editor.apply()
-
         binding.followerRv.layoutManager = LinearLayoutManager(requireContext())
         binding.followerRv.adapter = FollowerAdapter(response.result.followers)
     }
 
     override fun onGetFollowersFailure(message: String) {
+        showCustomToast("오류: $message")
+    }
+
+    override fun onGetFollowingsSuccess(response: FollowingResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onGetFollowingsFailure(message: String) {
         TODO("Not yet implemented")
     }
 }

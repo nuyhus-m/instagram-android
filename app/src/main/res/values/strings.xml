@@ -95,6 +95,7 @@
     <string name="profile_btn2">프로필 공유</string>
     <string name="profile_story_title">스토리 하이라이트</string>
     <string name="profile_story_sub_title">좋아하는 스토리를 프로필에 보관해보세요</string>
+    <string name="profile_story_new">신규</string>
     <string name="profile_page1_text1">프로필</string>
     <string name="profile_page1_text2">사진과 동영상을 공유하면 프로필에 표시됩니다.</string>
     <string name="profile_page1_text3">첫 사진/동영상을 공유해보세요</string>

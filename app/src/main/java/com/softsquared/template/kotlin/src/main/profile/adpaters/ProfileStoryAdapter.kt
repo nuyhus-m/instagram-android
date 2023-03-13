@@ -1,6 +1,7 @@
 package com.softsquared.template.kotlin.src.main.profile.adpaters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.softsquared.template.kotlin.databinding.ItemProfileStoryBinding
@@ -9,7 +10,11 @@ class ProfileStoryAdapter : RecyclerView.Adapter<ProfileStoryAdapter.ProfileStor
 
     inner class ProfileStoryViewHolder(private val profileStoryItemBinding: ItemProfileStoryBinding) :
         RecyclerView.ViewHolder(profileStoryItemBinding.root) {
-        fun bind() {
+        fun bind(position: Int) {
+            if (position != 0) {
+                profileStoryItemBinding.profileStoryFirst.visibility = View.INVISIBLE
+                profileStoryItemBinding.profileStoryText.visibility = View.INVISIBLE
+            }
         }
     }
 
@@ -19,7 +24,7 @@ class ProfileStoryAdapter : RecyclerView.Adapter<ProfileStoryAdapter.ProfileStor
     }
 
     override fun onBindViewHolder(holder: ProfileStoryViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(position)
     }
 
     override fun getItemCount(): Int {

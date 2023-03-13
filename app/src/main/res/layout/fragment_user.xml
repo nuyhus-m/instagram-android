@@ -10,7 +10,6 @@
         android:id="@+id/user_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -217,6 +216,7 @@
                 android:id="@+id/user_tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 app:tabIconTint="@color/grayForTab"
                 app:tabIndicatorColor="@color/black" />
 

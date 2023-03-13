@@ -38,7 +38,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         fragmentController(resources.getString(R.string.home_fragment), f, f)
                     }
                     R.id.menu_main_btm_nav_search -> {
-                        fragmentController(resources.getString(R.string.user_fragment), f, f)
+
                     }
                     R.id.menu_main_btm_nav_plus -> {
 

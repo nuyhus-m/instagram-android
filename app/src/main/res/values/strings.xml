@@ -104,6 +104,7 @@
     <string name="profile_page2_text2">사람들이 회원님을 사진 및 동영상에 태그하면</string>
     <string name="profile_page2_text3">태그된 사진 및 동영상이 여기에 표시됩니다.</string>
     <string name="user_btn_message">메시지</string>
+    <string name="user_page_zero">게시물 없음</string>
 
     <!-- Comment -->
     <string name="comment_toolbar_title">댓글</string>

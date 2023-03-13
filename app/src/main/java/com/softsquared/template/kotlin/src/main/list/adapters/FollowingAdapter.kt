@@ -5,10 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.databinding.ItemFollowingBinding
+import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.main.list.models.Following
 
-class FollowingAdapter(private val followingList: List<Following>) : RecyclerView.Adapter<FollowingAdapter.FollowingViewHolder>() {
+class FollowingAdapter(private val followingList: List<Following>, private val act: MainActivity) : RecyclerView.Adapter<FollowingAdapter.FollowingViewHolder>() {
 
     inner class FollowingViewHolder(private val followingItemBinding: ItemFollowingBinding) :
         RecyclerView.ViewHolder(followingItemBinding.root) {
@@ -25,7 +27,15 @@ class FollowingAdapter(private val followingList: List<Following>) : RecyclerVie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingViewHolder {
         val binding = ItemFollowingBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return FollowingViewHolder(binding)
+
+        return FollowingViewHolder(binding).also { holder ->
+            binding.followingLayout.setOnClickListener {
+                val editor = ApplicationClass.sSharedPreferences.edit()
+                editor.putInt("aUserId", followingList[holder.adapterPosition].user_id)
+                editor.apply()
+                act.fragmentController("user", true, true)
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: FollowingViewHolder, position: Int) {

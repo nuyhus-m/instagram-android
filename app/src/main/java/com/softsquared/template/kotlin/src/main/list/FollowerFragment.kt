@@ -7,6 +7,7 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentFollowerBinding
+import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.main.list.adapters.FollowerAdapter
 import com.softsquared.template.kotlin.src.main.list.models.FollowerResponse
 import com.softsquared.template.kotlin.src.main.list.models.FollowingResponse
@@ -21,8 +22,9 @@ class FollowerFragment : BaseFragment<FragmentFollowerBinding>(FragmentFollowerB
     }
 
     override fun onGetFollowersSuccess(response: FollowerResponse) {
+        val act = activity as MainActivity
         binding.followerRv.layoutManager = LinearLayoutManager(requireContext())
-        binding.followerRv.adapter = FollowerAdapter(response.result.followers)
+        binding.followerRv.adapter = FollowerAdapter(response.result.followers, act)
     }
 
     override fun onGetFollowersFailure(message: String) {

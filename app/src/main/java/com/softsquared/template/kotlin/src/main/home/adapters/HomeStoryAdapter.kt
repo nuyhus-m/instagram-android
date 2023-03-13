@@ -4,21 +4,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.databinding.ItemHomeStoryBinding
+import com.softsquared.template.kotlin.src.main.home.models.ResultHomeStory
 
-class HomeStoryAdapter : RecyclerView.Adapter<HomeStoryAdapter.HomeStoryViewHolder>() {
-
-    private val nicknameList = listOf("aaaa", "bbbb", "cccc", "dddd", "eeee", "ffff")
+class HomeStoryAdapter(private val storyList: List<ResultHomeStory>) : RecyclerView.Adapter<HomeStoryAdapter.HomeStoryViewHolder>() {
 
     inner class HomeStoryViewHolder(private val homeStoryItemBinding: ItemHomeStoryBinding) :
         RecyclerView.ViewHolder(homeStoryItemBinding.root) {
-        fun bind(pos: Int) {
+        fun bind(story: ResultHomeStory, pos: Int) {
             if (pos == 0) {
-                homeStoryItemBinding.homeStoryRing.visibility = View.INVISIBLE
                 homeStoryItemBinding.homeStoryNickname.text = "내 스토리"
             } else {
-                homeStoryItemBinding.homeStoryNickname.text = nicknameList[pos - 1]
+                homeStoryItemBinding.homeStoryNickname.text = story.nickname
             }
+            if (story.view_status == 1) {
+                homeStoryItemBinding.homeStoryRing.visibility = View.INVISIBLE
+            }
+            Glide.with(itemView)
+                .load(story.profile_image_url)
+                .into(homeStoryItemBinding.homeStoryProfile)
         }
     }
 
@@ -29,10 +34,10 @@ class HomeStoryAdapter : RecyclerView.Adapter<HomeStoryAdapter.HomeStoryViewHold
     }
 
     override fun onBindViewHolder(holder: HomeStoryViewHolder, position: Int) {
-        holder.bind(position)
+        holder.bind(storyList[position], position)
     }
 
     override fun getItemCount(): Int {
-        return nicknameList.size + 1
+        return storyList.size
     }
 }

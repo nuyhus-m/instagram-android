@@ -8,6 +8,7 @@
     <string name="home_fragment">home</string>
     <string name="profile_fragment">profile</string>
     <string name="list_fragment">list</string>
+    <string name="user_fragment">user</string>
     <string name="login_fragment">login</string>
     <string name="join_p_n_fragment">joinPN</string>
     <string name="join_email_fragment">joinEmail</string>
@@ -102,6 +103,7 @@
     <string name="profile_page2_text1">회원님이 나온 사진 및 동영상</string>
     <string name="profile_page2_text2">사람들이 회원님을 사진 및 동영상에 태그하면</string>
     <string name="profile_page2_text3">태그된 사진 및 동영상이 여기에 표시됩니다.</string>
+    <string name="user_btn_message">메시지</string>
 
     <!-- Comment -->
     <string name="comment_toolbar_title">댓글</string>

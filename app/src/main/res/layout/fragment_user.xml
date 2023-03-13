@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".src.main.profile.ProfileFragment">
+    tools:context=".src.main.user.UserFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/user_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/profile_nick_name"
+                android:id="@+id/user_nick_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -34,21 +34,21 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/profile_toolbar_add"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_toolbar_add"
+                android:id="@+id/user_toolbar_bell"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/ic_bell"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/profile_toolbar_menu"
+                app:layout_constraintEnd_toStartOf="@+id/user_toolbar_dots"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/profile_toolbar_menu"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/user_toolbar_dots"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
                 android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_toolbar_menu"
+                android:src="@drawable/dots"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+        app:layout_constraintTop_toBottomOf="@+id/user_toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,11 +78,11 @@
                 android:layout_marginBottom="10dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_img"
+                    android:id="@+id/user_img"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
                     android:layout_marginStart="20dp"
-                    android:src="@color/white"
+                    android:src="@drawable/img_default_profile"
                     app:civ_border_color="@color/grayForBtn"
                     app:civ_border_width="1dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -90,17 +90,17 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
-                    android:id="@+id/linearLayout2"
+                    android:id="@+id/user_post_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="40dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/profile_img"
+                    app:layout_constraintStart_toEndOf="@+id/user_img"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/profile_post_num"
+                        android:id="@+id/user_post_num"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
@@ -108,7 +108,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/profile_post_text"
+                        android:id="@+id/user_post_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/profile_post_text"
@@ -116,17 +116,17 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/profile_follower_list"
+                    android:id="@+id/user_follower_list"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/profile_following_list"
-                    app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+                    app:layout_constraintEnd_toStartOf="@+id/user_following_list"
+                    app:layout_constraintStart_toEndOf="@+id/user_post_layout"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/profile_follower_num"
+                        android:id="@+id/user_follower_num"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
@@ -134,7 +134,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/profile_follower_text"
+                        android:id="@+id/user_follower_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/profile_follower_text"
@@ -142,7 +142,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/profile_following_list"
+                    android:id="@+id/user_following_list"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="40dp"
@@ -152,7 +152,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/profile_following_num"
+                        android:id="@+id/user_following_num"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
@@ -160,7 +160,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/profile_following_text"
+                        android:id="@+id/user_following_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/profile_following_text"
@@ -170,7 +170,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/profile_introduce"
+                android:id="@+id/user_introduce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp" />
@@ -184,26 +184,26 @@
                 android:paddingEnd="20dp">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/user_btn_following"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_btn_gray"
-                    android:text="@string/profile_btn1"
+                    android:text="@string/profile_following_text"
                     android:textSize="13sp" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/user_btn_message"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_btn_gray"
-                    android:text="@string/profile_btn2"
+                    android:text="@string/user_btn_message"
                     android:textSize="13sp" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/user_btn_img"
                     android:layout_width="35dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
@@ -213,72 +213,15 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:text="@string/profile_story_title"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/profile_story_up"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_profile_story_up" />
-            </LinearLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/profile_story"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/profile_story_sub_title"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toTopOf="@+id/profile_rv_story"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/profile_rv_story"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/profile_tab"
+                android:id="@+id/user_tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabIconTint="@color/grayForTab"
                 app:tabIndicatorColor="@color/black" />
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/profile_pages"
+                android:id="@+id/user_pages"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 

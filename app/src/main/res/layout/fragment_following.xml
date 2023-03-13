@@ -19,6 +19,20 @@
         app:layout_constraintTop_toTopOf="parent">
     </SearchView>
 
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:hint="@string/list_search_hint"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:textCursorDrawable="@drawable/background_et_cursor"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchView2"
+        app:layout_constraintEnd_toEndOf="@+id/searchView2"
+        app:layout_constraintStart_toStartOf="@+id/searchView2"
+        app:layout_constraintTop_toTopOf="@+id/searchView2" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/following_rv"
         android:layout_width="match_parent"

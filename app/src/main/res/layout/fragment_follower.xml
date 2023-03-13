@@ -20,6 +20,20 @@
 
     </SearchView>
 
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:hint="@string/list_search_hint"
+        android:paddingStart="50dp"
+        android:paddingEnd="50dp"
+        android:textCursorDrawable="@drawable/background_et_cursor"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchView"
+        app:layout_constraintEnd_toEndOf="@+id/searchView"
+        app:layout_constraintStart_toStartOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchView" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/follower_rv"
         android:layout_width="match_parent"

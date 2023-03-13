@@ -50,9 +50,17 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
         val act = activity as MainActivity
 
         binding.profileFollowerList.setOnClickListener {
+            val editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putInt("tabItem", 0)
+            editor.apply()
+
             act.fragmentController(resources.getString(R.string.list_fragment), t, f)
         }
         binding.profileFollowingList.setOnClickListener {
+            val editor = ApplicationClass.sSharedPreferences.edit()
+            editor.putInt("tabItem", 1)
+            editor.apply()
+
             act.fragmentController(resources.getString(R.string.list_fragment), t, f)
         }
     }

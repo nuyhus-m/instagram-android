@@ -26,6 +26,8 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::bind
             val act = activity as MainActivity
             act.fragmentRemoveBackStack(resources.getString(R.string.list_fragment))
         }
+        binding.listToolbarTitle.text = ApplicationClass.sSharedPreferences.getString("profileNickName", "")
+
         val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
         FollowService(this).tryGetFollowers(userId)
     }
@@ -40,6 +42,8 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::bind
         TabLayoutMediator(binding.listTabLayout, binding.listViewPager){ tab: TabLayout.Tab, i: Int ->
             tab.text = tabTitle[i]
         }.attach()
+
+        binding.listViewPager.currentItem = ApplicationClass.sSharedPreferences.getInt("tabItem", -1)
     }
 
     override fun onGetFollowersFailure(message: String) {

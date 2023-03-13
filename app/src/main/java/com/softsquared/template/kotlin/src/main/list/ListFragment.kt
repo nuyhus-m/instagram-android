@@ -9,6 +9,7 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentListBinding
+import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.main.list.adapters.ListPagerAdapter
 
 class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::bind, R.layout.fragment_list) {
@@ -18,7 +19,8 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::bind
 
         binding.listToolbar.navigationIcon = requireContext().getDrawable(com.softsquared.template.kotlin.R.drawable.ic_back_resize)
         binding.listToolbar.setNavigationOnClickListener {
-
+            val act = activity as MainActivity
+            act.fragmentRemoveBackStack(resources.getString(R.string.list_fragment))
         }
 
         val tabTitle = listOf(

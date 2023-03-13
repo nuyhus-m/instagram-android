@@ -1,6 +1,9 @@
 package com.softsquared.template.kotlin.src.main
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
@@ -12,14 +15,15 @@ import com.softsquared.template.kotlin.src.main.profile.ProfileFragment
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragmentInterface
 import com.softsquared.template.kotlin.src.main.profile.ProfileService
 import com.softsquared.template.kotlin.src.main.profile.models.ProfileResponse
+import com.softsquared.template.kotlin.src.start.join.*
+import com.softsquared.template.kotlin.src.start.login.LoginFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), ProfileFragmentInterface {
 
+    lateinit var currentFragment: Fragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        supportFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment())
-            .commitAllowingStateLoss()
 
         binding.mainBtmNav.itemIconTintList = null
 
@@ -30,9 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.menu_main_btm_nav_home -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, ListFragment())
-                            .commitAllowingStateLoss()
+                        fragmentController(resources.getString(R.string.home_fragment), f, f)
                     }
                     R.id.menu_main_btm_nav_search -> {
 
@@ -44,15 +46,45 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
                     }
                     R.id.menu_main_btm_nav_profile -> {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_frm, ProfileFragment())
-                            .commitAllowingStateLoss()
+                        fragmentController(resources.getString(R.string.profile_fragment), f, f)
                     }
                 }
                 true
             }
             selectedItemId = R.id.menu_main_btm_nav_home
         }
+    }
+
+    fun fragmentController(name: String, add: Boolean, animate: Boolean) {
+
+        when (name) {
+            resources.getString(R.string.home_fragment) -> {
+                currentFragment = HomeFragment()
+            }
+            resources.getString(R.string.profile_fragment) -> {
+                currentFragment = ProfileFragment()
+            }
+            resources.getString(R.string.list_fragment) -> {
+                currentFragment = ListFragment()
+            }
+        }
+
+        val trans = supportFragmentManager.beginTransaction()
+        trans.replace(R.id.main_frm, currentFragment)
+
+        if (add) {
+            trans.addToBackStack(name)
+        }
+
+        if (animate) {
+            trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        }
+
+        trans.commit()
+    }
+
+    fun fragmentRemoveBackStack(name: String){
+        supportFragmentManager.popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {

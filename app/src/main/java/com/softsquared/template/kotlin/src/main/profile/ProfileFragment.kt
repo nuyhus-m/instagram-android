@@ -11,6 +11,7 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentProfileBinding
+import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.main.profile.adpaters.ProfilePagerAdapter
 import com.softsquared.template.kotlin.src.main.profile.adpaters.ProfileStoryAdapter
 import com.softsquared.template.kotlin.src.main.profile.models.ProfileResponse
@@ -45,6 +46,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
         val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
         ProfileService(this).tryGetProfile(userId)
+
+        val act = activity as MainActivity
+
+        binding.profileFollowerList.setOnClickListener {
+            act.fragmentController(resources.getString(R.string.list_fragment), t, f)
+        }
+        binding.profileFollowingList.setOnClickListener {
+            act.fragmentController(resources.getString(R.string.list_fragment), t, f)
+        }
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {

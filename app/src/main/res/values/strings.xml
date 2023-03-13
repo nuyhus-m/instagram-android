@@ -5,6 +5,9 @@
     <!-- 도메인명_컴포넌트함축어_용도(=목적) -->
 
     <!-- Common -->
+    <string name="home_fragment">home</string>
+    <string name="profile_fragment">profile</string>
+    <string name="list_fragment">list</string>
     <string name="login_fragment">login</string>
     <string name="join_p_n_fragment">joinPN</string>
     <string name="join_email_fragment">joinEmail</string>

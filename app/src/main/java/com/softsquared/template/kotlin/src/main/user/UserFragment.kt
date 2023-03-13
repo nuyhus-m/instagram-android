@@ -70,6 +70,41 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
             binding.userPostNum.text = response.result.post_count.toString()
             binding.userFollowerNum.text = response.result.follower_count.toString()
             binding.userFollowingNum.text = response.result.following_count.toString()
+        if(response.result.introduce != null){
+            binding.userIntroduce.text = response.result.introduce.toString()
+        } else {
+            binding.userIntroduce.visibility = View.GONE
+        }
+        when(response.result.connected_count) {
+            0 -> binding.userConnected.visibility = View.GONE
+            1 -> {
+                Glide.with(requireContext())
+                    .load(response.result.connected_friend_profiles[0].profile_image_url)
+                    .into(binding.userConnectedPhoto1)
+                binding.userConnectedPhoto2.visibility = View.GONE
+                binding.userConnectedText.text = "${response.result.connected_friend_profiles[0].nickname}님이 팔로우합니다."
+            }
+            2 -> {
+                Glide.with(requireContext())
+                    .load(response.result.connected_friend_profiles[0].profile_image_url)
+                    .into(binding.userConnectedPhoto1)
+                Glide.with(requireContext())
+                    .load(response.result.connected_friend_profiles[1].profile_image_url)
+                    .into(binding.userConnectedPhoto2)
+                binding.userConnectedText.text =
+                    "${response.result.connected_friend_profiles[0].nickname}님, ${response.result.connected_friend_profiles[1].nickname}님이 팔로우합니다."
+            }
+            else -> {
+                Glide.with(requireContext())
+                    .load(response.result.connected_friend_profiles[0].profile_image_url)
+                    .into(binding.userConnectedPhoto1)
+                Glide.with(requireContext())
+                    .load(response.result.connected_friend_profiles[1].profile_image_url)
+                    .into(binding.userConnectedPhoto2)
+                binding.userConnectedText.text =
+                    "${response.result.connected_friend_profiles[0].nickname}님, ${response.result.connected_friend_profiles[1].nickname}님 외 ${response.result.connected_count}명이 팔로우합니다."
+            }
+        }
     }
 
     override fun onGetProfileFailure(message: String) {

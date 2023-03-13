@@ -28,8 +28,26 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
         TabLayoutMediator(binding.profileTab, binding.profilePages) { tab: TabLayout.Tab, i: Int ->
             tab.setIcon(tabIcon[i])
+            if (i == 0){
+                tab.icon?.setTint(resources.getColor(R.color.black, resources.newTheme()))
+            }
             tab.setCustomView(R.layout.custom_tab)
         }.attach()
+
+        binding.profileTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.icon?.setTint(resources.getColor(R.color.black, resources.newTheme()))
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                tab?.icon?.setTint(resources.getColor(R.color.grayForTab, resources.newTheme()))
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+            }
+
+        })
 
         binding.profileRvStory.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.profileRvStory.adapter = ProfileStoryAdapter()

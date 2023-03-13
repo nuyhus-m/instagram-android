@@ -21,6 +21,9 @@ class HomeStoryAdapter(private val storyList: List<ResultHomeStory>) : RecyclerV
             if (story.view_status == 1) {
                 homeStoryItemBinding.homeStoryRing.visibility = View.INVISIBLE
             }
+            if(story.updated_at != "nothing") {
+                homeStoryItemBinding.homeStoryPlus.visibility = View.INVISIBLE
+            }
             Glide.with(itemView)
                 .load(story.profile_image_url)
                 .into(homeStoryItemBinding.homeStoryProfile)

@@ -40,10 +40,17 @@ class HomeFragment :
     }
 
     override fun onGetHomeStoriesSuccess(response: HomeStoryResponse) {
+        binding.homeRvStory.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         if (response.result != null) {
-            binding.homeRvStory.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             binding.homeRvStory.adapter = HomeStoryAdapter(response.result)
+            if (response.result.isEmpty()){
+                val nickName = ApplicationClass.sSharedPreferences.getString("profileNickName", "default")!!
+                val photo = ApplicationClass.sSharedPreferences.getString("profilePhoto", "##")!!
+                val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
+                val storyList = listOf(ResultHomeStory(nickName, photo, 1, "nothing", userId, 1))
+                binding.homeRvStory.adapter = HomeStoryAdapter(storyList)
+            }
         }
     }
 

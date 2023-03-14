@@ -10,6 +10,7 @@
     <string name="list_fragment">list</string>
     <string name="user_fragment">user</string>
     <string name="login_fragment">login</string>
+    <string name="gallery_fragment">gallery</string>
     <string name="join_p_n_fragment">joinPN</string>
     <string name="join_email_fragment">joinEmail</string>
     <string name="join_email_auth_fragment">joinEmailAuth</string>
@@ -117,6 +118,10 @@
     <string name="list_tab_following">팔로잉 %d명</string>
     <string name="follower_btn_delete">삭제</string>
     <string name="list_search_hint">검색</string>
+
+    <!-- gallery -->
+    <string name="gallery_toolbar_title">새 게시물</string>
+    <string name="gallery">갤러리</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

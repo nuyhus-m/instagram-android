@@ -10,10 +10,12 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentGalleryBinding
 import com.softsquared.template.kotlin.src.add.AddActivity
 import com.softsquared.template.kotlin.src.add.gallery.adapters.GalleryAdapter
+import org.jetbrains.anko.image
 
 
 class GalleryFragment : BaseFragment<FragmentGalleryBinding>(FragmentGalleryBinding::bind, R.layout.fragment_gallery), GalleryInterface {
@@ -66,17 +68,21 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(FragmentGalleryBind
             .load(uri)
             .into(binding.galleryImg)
 
-        val getUri = getUriFromPath(uri)
-        Log.d("plz","uri:${uri}, getUri:$getUri")
+        val editor = ApplicationClass.sSharedPreferences.edit()
+        editor.putString("uri", uri)
+        editor.apply()
+
+//        val getUri = getUriFromPath(uri)
+        Log.d("plz","uri:${uri}")
     }
 
-    fun getUriFromPath(filePath: String): Uri? {
-        val cursor: Cursor? = requireContext().contentResolver.query(
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-            null, "_data = '$filePath'", null, null
-        )
-        cursor?.moveToNext()
-        val id: Int = cursor?.getInt(cursor.getColumnIndex("_id")) ?: 0
-        return ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id.toLong())
-    }
+//    fun getUriFromPath(filePath: String): Uri? {
+//        val cursor: Cursor? = requireContext().contentResolver.query(
+//            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+//            null, "_data = '$filePath'", null, null
+//        )
+//        cursor?.moveToNext()
+//        val id: Int = cursor?.getInt(cursor.getColumnIndex("_id")) ?: 0
+//        return ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id.toLong())
+//    }
 }

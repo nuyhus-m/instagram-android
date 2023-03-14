@@ -12,6 +12,7 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityAddBinding
 import com.softsquared.template.kotlin.src.add.gallery.GalleryFragment
+import com.softsquared.template.kotlin.src.add.upload.UploadFragment
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
 import org.jetbrains.anko.toast
@@ -70,6 +71,9 @@ class AddActivity : BaseActivity<ActivityAddBinding>(ActivityAddBinding::inflate
         when (name) {
             resources.getString(R.string.gallery_fragment) -> {
                 currentFragment = GalleryFragment()
+            }
+            resources.getString(R.string.upload_fragment) -> {
+                currentFragment = UploadFragment()
             }
         }
 

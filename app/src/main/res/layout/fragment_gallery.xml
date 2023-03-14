@@ -26,18 +26,14 @@
             android:text="@string/gallery_toolbar_title"
             android:textColor="@color/black"
             android:textSize="17sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="18dp" />
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/gallery_toolbar_btn_go"
             android:layout_width="37dp"
             android:layout_height="37dp"
             android:layout_gravity="center_vertical|end"
-            android:src="@drawable/ic_go"
-            tools:layout_editor_absoluteX="86dp"
-            tools:layout_editor_absoluteY="18dp" />
+            android:src="@drawable/ic_go" />
 
     </androidx.appcompat.widget.Toolbar>
 

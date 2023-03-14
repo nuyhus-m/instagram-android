@@ -11,6 +11,7 @@
     <string name="user_fragment">user</string>
     <string name="login_fragment">login</string>
     <string name="gallery_fragment">gallery</string>
+    <string name="upload_fragment">upload</string>
     <string name="join_p_n_fragment">joinPN</string>
     <string name="join_email_fragment">joinEmail</string>
     <string name="join_email_auth_fragment">joinEmailAuth</string>
@@ -122,6 +123,11 @@
     <!-- gallery -->
     <string name="gallery_toolbar_title">새 게시물</string>
     <string name="gallery">갤러리</string>
+    <!-- upload -->
+    <string name="upload_et">문구 입력...</string>
+    <string name="upload_tag_user">사람 태그하기</string>
+    <string name="upload_tag_location">위치 추가</string>
+    <string name="upload_tag_music">음악 추가</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

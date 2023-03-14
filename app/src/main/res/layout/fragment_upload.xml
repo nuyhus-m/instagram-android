@@ -161,8 +161,9 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@color/grayForBackground"
+            android:background="@drawable/background_btn_gray"
             android:text="서울책보고"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="10sp" />
 
@@ -175,8 +176,9 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@color/grayForBackground"
+            android:background="@drawable/background_btn_gray"
             android:text="롯데월드(lotteworld)"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="10sp" />
 
@@ -188,8 +190,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@color/grayForBackground"
+            android:background="@drawable/background_btn_gray"
             android:text="SIGNIEL - 시그니엘"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="10sp" />
     </LinearLayout>
@@ -252,8 +255,9 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@color/grayForBackground"
+            android:background="@drawable/background_btn_gray"
             android:text="leellamarz-흑백영화"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="10sp" />
 
@@ -265,8 +269,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="@color/grayForBackground"
+            android:background="@drawable/background_btn_gray"
             android:text="자이언트핑크-너를 사랑하진 않아"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="10sp" />
 

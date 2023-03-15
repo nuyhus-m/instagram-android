@@ -1,6 +1,7 @@
 package com.softsquared.template.kotlin.src.add.gallery
 
 import android.content.ContentUris
+import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentGalleryBinding
 import com.softsquared.template.kotlin.src.add.AddActivity
 import com.softsquared.template.kotlin.src.add.gallery.adapters.GalleryAdapter
+import com.softsquared.template.kotlin.src.main.MainActivity
 import org.jetbrains.anko.image
 
 
@@ -29,7 +31,8 @@ class GalleryFragment : BaseFragment<FragmentGalleryBinding>(FragmentGalleryBind
 
         binding.galleryToolbar.navigationIcon = requireContext().getDrawable(com.softsquared.template.kotlin.R.drawable.ic_x_resize)
         binding.galleryToolbar.setNavigationOnClickListener {
-            act.fragmentRemoveBackStack(resources.getString(R.string.gallery_fragment))
+            startActivity(Intent(requireContext(),MainActivity::class.java))
+            requireActivity().finish()
         }
         binding.galleryToolbarBtnGo.setOnClickListener {
             act.fragmentController(resources.getString(R.string.upload_fragment), t, t)

@@ -1,5 +1,6 @@
 package com.softsquared.template.kotlin.src.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -9,6 +10,7 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityMainBinding
+import com.softsquared.template.kotlin.src.add.AddActivity
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
 import com.softsquared.template.kotlin.src.main.list.ListFragment
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragment
@@ -41,7 +43,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
                     }
                     R.id.menu_main_btm_nav_plus -> {
-
+                        startActivity(Intent(this@MainActivity, AddActivity::class.java))
+                        finish()
                     }
                     R.id.menu_main_btm_nav_reels -> {
 

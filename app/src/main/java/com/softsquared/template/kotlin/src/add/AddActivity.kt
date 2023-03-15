@@ -58,11 +58,11 @@ class AddActivity : BaseActivity<ActivityAddBinding>(ActivityAddBinding::inflate
                     this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                     REQUEST_READ_EXTERMAL_STORAGE
                 )
-                fragmentController(resources.getString(R.string.gallery_fragment), t, f)
+                fragmentController(resources.getString(R.string.gallery_fragment), f, f)
             }
         } else {
             // 권한이 이미 허용됨
-            fragmentController(resources.getString(R.string.gallery_fragment), t, f)
+            fragmentController(resources.getString(R.string.gallery_fragment), f, f)
         }
     }
 

@@ -26,7 +26,11 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
         binding.userToolbar.navigationIcon = requireContext().getDrawable(com.softsquared.template.kotlin.R.drawable.ic_back_resize)
         binding.userToolbar.setNavigationOnClickListener {
             val act = activity as MainActivity
-            act.fragmentRemoveBackStack(resources.getString(R.string.user_fragment))
+            if (ApplicationClass.sSharedPreferences.getInt("tabItem",-1) == 2) {
+                act.fragmentRemoveBackStack(resources.getString(R.string.user_fragment))
+            } else {
+                act.fragmentController(resources.getString(R.string.list_fragment), f, f)
+            }
         }
 
         val tabIcon = listOf(R.drawable.ic_profile_tab1, R.drawable.ic_profile_tab2)

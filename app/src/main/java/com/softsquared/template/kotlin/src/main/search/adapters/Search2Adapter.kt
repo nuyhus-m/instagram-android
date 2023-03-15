@@ -38,6 +38,7 @@ class Search2Adapter(private val searchList: List<ResultSearch2>, private val ac
             binding.searchLayout.setOnClickListener {
                 val editor = ApplicationClass.sSharedPreferences.edit()
                 editor.putInt("aUserId", searchList[holder.adapterPosition].user_id)
+                editor.putInt("tabItem", 2)
                 editor.apply()
                 act.fragmentController("user", true, true)
             }

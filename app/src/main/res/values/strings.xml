@@ -9,6 +9,7 @@
     <string name="search1_fragment">search1</string>
     <string name="search2_fragment">search2</string>
     <string name="profile_fragment">profile</string>
+    <string name="post_fragment">post</string>
     <string name="list_fragment">list</string>
     <string name="user_fragment">user</string>
     <string name="login_fragment">login</string>

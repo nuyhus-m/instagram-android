@@ -10,6 +10,7 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentUserPage1Binding
+import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragmentInterface
 import com.softsquared.template.kotlin.src.main.profile.ProfilePostFragmentInterface
 import com.softsquared.template.kotlin.src.main.profile.ProfilePostService
@@ -35,8 +36,9 @@ class UserPage1Fragment : BaseFragment<FragmentUserPage1Binding>(FragmentUserPag
         if (postList.isNotEmpty()) {
             binding.userPage1Zero.visibility = View.GONE
         }
+        val act = activity as MainActivity
         binding.userPage1Rv.layoutManager = GridLayoutManager(requireContext(), 3)
-        binding.userPage1Rv.adapter = ProfilePostAdapter(postList)
+        binding.userPage1Rv.adapter = ProfilePostAdapter(postList, act)
     }
 
     override fun onGetProfilePostFailure(message: String) {

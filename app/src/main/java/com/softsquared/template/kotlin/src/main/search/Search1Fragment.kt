@@ -32,8 +32,9 @@ class Search1Fragment : BaseFragment<FragmentSearch1Binding>(FragmentSearch1Bind
         for (i in 0 until response.result.size) {
             postList.add(response.result[i].firstPhotoUrl)
         }
+        val act = activity as MainActivity
         binding.searchRv.layoutManager = GridLayoutManager(requireContext(), 3)
-        binding.searchRv.adapter = ProfilePostAdapter(postList)
+        binding.searchRv.adapter = ProfilePostAdapter(postList, act)
     }
 
     override fun onGetAllPostsFailure(message: String) {

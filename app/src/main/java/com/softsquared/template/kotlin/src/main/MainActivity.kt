@@ -13,6 +13,7 @@ import com.softsquared.template.kotlin.databinding.ActivityMainBinding
 import com.softsquared.template.kotlin.src.add.AddActivity
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
 import com.softsquared.template.kotlin.src.main.list.ListFragment
+import com.softsquared.template.kotlin.src.main.post.PostFragment
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragment
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragmentInterface
 import com.softsquared.template.kotlin.src.main.profile.ProfileService
@@ -81,6 +82,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             resources.getString(R.string.search2_fragment) -> {
                 currentFragment = Search2Fragment()
+            }
+            resources.getString(R.string.post_fragment) -> {
+                currentFragment = PostFragment()
             }
         }
 

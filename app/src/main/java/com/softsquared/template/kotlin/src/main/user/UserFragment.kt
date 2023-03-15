@@ -1,10 +1,7 @@
 package com.softsquared.template.kotlin.src.main.user
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
@@ -16,7 +13,6 @@ import com.softsquared.template.kotlin.databinding.FragmentUserBinding
 import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragmentInterface
 import com.softsquared.template.kotlin.src.main.profile.ProfileService
-import com.softsquared.template.kotlin.src.main.profile.adpaters.ProfilePagerAdapter
 import com.softsquared.template.kotlin.src.main.profile.models.ProfileResponse
 import com.softsquared.template.kotlin.src.main.user.adapters.UserPagerAdapter
 import com.softsquared.template.kotlin.src.main.user.models.UnFollowResponse
@@ -70,13 +66,19 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
-            binding.userNickName.text = response.result.nickname
-            Glide.with(this)
-                .load(response.result.profile_image_url)
-                .into(binding.userImg)
-            binding.userPostNum.text = response.result.post_count.toString()
-            binding.userFollowerNum.text = response.result.follower_count.toString()
-            binding.userFollowingNum.text = response.result.following_count.toString()
+        binding.userNickName.text = response.result.nickname
+        Glide.with(this)
+            .load(response.result.profile_image_url)
+            .into(binding.userImg)
+        binding.userPostNum.text = response.result.post_count.toString()
+        binding.userFollowerNum.text = response.result.follower_count.toString()
+        binding.userFollowingNum.text = response.result.following_count.toString()
+        val followStatus = ApplicationClass.sSharedPreferences.getInt("aUserFollow", -1)
+        if (followStatus == 0) {
+            binding.userBtnFollowing.text = "팔로우"
+            binding.userBtnFollowing.setTextColor(requireContext().getColorStateList(R.color.white))
+            binding.userBtnFollowing.background = requireContext().getDrawable(R.drawable.background_btn_blue)
+        }
         if(response.result.introduce != null){
             binding.userIntroduce.text = response.result.introduce.toString()
         } else {

@@ -31,6 +31,7 @@ class FollowerAdapter(private val followerList: List<Follower>, private val act:
             binding.followerLayout.setOnClickListener {
                 val editor = ApplicationClass.sSharedPreferences.edit()
                 editor.putInt("aUserId", followerList[holder.adapterPosition].user_id)
+                editor.putInt("aUserFollow", followerList[holder.adapterPosition].follow_status)
                 editor.apply()
                 act.fragmentController("user", true, true)
             }

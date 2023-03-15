@@ -42,7 +42,6 @@ class Search2Fragment : BaseFragment<FragmentSearch2Binding>(FragmentSearch2Bind
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                Log.d("p0",p0.toString())
                 Search2Service(this@Search2Fragment).tryGetSearch(p0.toString())
             }
         })
@@ -54,8 +53,9 @@ class Search2Fragment : BaseFragment<FragmentSearch2Binding>(FragmentSearch2Bind
     }
 
     override fun onGetSearchSuccess(response: Search2Response) {
+        val act = activity as MainActivity
         binding.searchRvSearch.layoutManager = LinearLayoutManager(requireContext())
-        binding.searchRvSearch.adapter = Search2Adapter(response.result)
+        binding.searchRvSearch.adapter = Search2Adapter(response.result, act)
     }
 
     override fun onGetSearchFailure(message: String) {

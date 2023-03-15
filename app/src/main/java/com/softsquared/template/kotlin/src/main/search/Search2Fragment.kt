@@ -2,6 +2,8 @@ package com.softsquared.template.kotlin.src.main.search
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.textfield.TextInputEditText
 import com.softsquared.template.kotlin.R
@@ -31,6 +34,18 @@ class Search2Fragment : BaseFragment<FragmentSearch2Binding>(FragmentSearch2Bind
             act.fragmentRemoveBackStack(resources.getString(R.string.search2_fragment))
         }
 
+        binding.search2Et.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                Log.d("p0",p0.toString())
+                Search2Service(this@Search2Fragment).tryGetSearch(p0.toString())
+            }
+        })
     }
 
     private fun showKeyboard(editText: EditText){

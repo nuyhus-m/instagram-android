@@ -7,7 +7,7 @@ data class ResultComment(
     val createdAt: String,
     val groupId: Int,
     val likeCount: Int,
-    val likeOn: Int,
+    val likeOn: LikeOn,
     val postId: Int,
     val profileName: String,
     val profilePicture: String,

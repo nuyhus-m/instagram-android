@@ -1,8 +1,7 @@
 package com.softsquared.template.kotlin.src.main.home.models
 
+import com.softsquared.template.kotlin.config.BaseResponse
+
 data class HomeStoryResponse(
-    val code: Int,
-    val isSuccess: Boolean,
-    val message: String,
     val result: List<ResultHomeStory>
-)
+): BaseResponse()

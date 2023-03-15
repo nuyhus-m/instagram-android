@@ -6,6 +6,7 @@
 
     <!-- Common -->
     <string name="home_fragment">home</string>
+    <string name="search_fragment">search</string>
     <string name="profile_fragment">profile</string>
     <string name="list_fragment">list</string>
     <string name="user_fragment">user</string>

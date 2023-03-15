@@ -17,6 +17,7 @@ import com.softsquared.template.kotlin.src.main.profile.ProfileFragment
 import com.softsquared.template.kotlin.src.main.profile.ProfileFragmentInterface
 import com.softsquared.template.kotlin.src.main.profile.ProfileService
 import com.softsquared.template.kotlin.src.main.profile.models.ProfileResponse
+import com.softsquared.template.kotlin.src.main.search.Search1Fragment
 import com.softsquared.template.kotlin.src.main.user.UserFragment
 import com.softsquared.template.kotlin.src.start.join.*
 import com.softsquared.template.kotlin.src.start.login.LoginFragment
@@ -40,7 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         fragmentController(resources.getString(R.string.home_fragment), f, f)
                     }
                     R.id.menu_main_btm_nav_search -> {
-
+                        fragmentController(resources.getString(R.string.search_fragment), f, f)
                     }
                     R.id.menu_main_btm_nav_plus -> {
                         startActivity(Intent(this@MainActivity, AddActivity::class.java))
@@ -73,6 +74,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             resources.getString(R.string.user_fragment) -> {
                 currentFragment = UserFragment()
+            }
+            resources.getString(R.string.search_fragment) -> {
+                currentFragment = Search1Fragment()
             }
         }
 

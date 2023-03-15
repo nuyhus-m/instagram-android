@@ -1,10 +1,7 @@
 package com.softsquared.template.kotlin.src.main.list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
@@ -22,11 +19,6 @@ class FollowingFragment : BaseFragment<FragmentFollowingBinding>(FragmentFollowi
 
         val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
         FollowService(this).tryGetFollowings(userId)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        binding.followingRv.adapter?.notifyDataSetChanged()
     }
 
     override fun onGetFollowersSuccess(response: FollowerResponse) {

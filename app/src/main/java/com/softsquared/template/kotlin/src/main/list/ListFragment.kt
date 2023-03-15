@@ -42,8 +42,6 @@ class ListFragment : BaseFragment<FragmentListBinding>(FragmentListBinding::bind
         TabLayoutMediator(binding.listTabLayout, binding.listViewPager){ tab: TabLayout.Tab, i: Int ->
             tab.text = tabTitle[i]
         }.attach()
-
-        binding.listViewPager.currentItem = ApplicationClass.sSharedPreferences.getInt("tabItem", -1)
     }
 
     override fun onGetFollowersFailure(message: String) {

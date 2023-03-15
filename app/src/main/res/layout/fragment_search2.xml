@@ -24,18 +24,28 @@
                 android:paddingEnd="10dp"
                 android:paddingBottom="10dp">
 
+                <ImageView
+                    android:id="@+id/search_back"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_back" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout7"
+                    android:id="@+id/constraintLayout22"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/background_et_gray"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/search_back"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/imageView9"
+                        android:id="@+id/search2_ic"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="10dp"
@@ -44,12 +54,12 @@
                         android:layout_marginBottom="5dp"
                         android:src="@drawable/ic_et_search"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/search1_et"
+                        app:layout_constraintEnd_toStartOf="@+id/search2_et"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <EditText
-                        android:id="@+id/search1_et"
+                        android:id="@+id/search2_et"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -59,7 +69,7 @@
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/imageView9"
+                        app:layout_constraintStart_toEndOf="@+id/search2_ic"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -78,10 +88,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:context=".src.main.search.Search1Fragment" >
+            tools:context=".src.main.search.Search2Fragment" >
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/search_rv"
+                android:id="@+id/search_rv_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

@@ -8,6 +8,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -92,5 +93,6 @@ class LoginFragment :
 
     override fun onPostLoginFailure(message: String) {
         showCustomToast("오류 : $message")
+        Log.d("오류","$message")
     }
 }

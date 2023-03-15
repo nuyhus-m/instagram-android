@@ -1,14 +1,12 @@
 package com.softsquared.template.kotlin.src.main.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.BaseFragment
 import com.softsquared.template.kotlin.databinding.FragmentSearch1Binding
+import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.main.profile.adpaters.ProfilePostAdapter
 import com.softsquared.template.kotlin.src.main.search.models.SearchResponse
 
@@ -20,9 +18,17 @@ class Search1Fragment : BaseFragment<FragmentSearch1Binding>(FragmentSearch1Bind
         super.onViewCreated(view, savedInstanceState)
 
         SearchService(this).tryGetAllPosts()
+
+        binding.search1Et.setOnFocusChangeListener{ view: View, b: Boolean ->
+            if(b) {
+                val act = activity as MainActivity
+                act.fragmentController(resources.getString(R.string.search2_fragment), t, f)
+            }
+        }
     }
 
     override fun onGetAllPostsSuccess(response: SearchResponse) {
+        postList.clear()
         for (i in 0 until response.result.size) {
             postList.add(response.result[i].firstPhotoUrl)
         }

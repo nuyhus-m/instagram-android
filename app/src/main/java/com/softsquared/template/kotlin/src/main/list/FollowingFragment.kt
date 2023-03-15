@@ -24,6 +24,11 @@ class FollowingFragment : BaseFragment<FragmentFollowingBinding>(FragmentFollowi
         FollowService(this).tryGetFollowings(userId)
     }
 
+    override fun onStart() {
+        super.onStart()
+        binding.followingRv.adapter?.notifyDataSetChanged()
+    }
+
     override fun onGetFollowersSuccess(response: FollowerResponse) {
         TODO("Not yet implemented")
     }

@@ -19,8 +19,9 @@ import com.softsquared.template.kotlin.src.main.profile.ProfileService
 import com.softsquared.template.kotlin.src.main.profile.adpaters.ProfilePagerAdapter
 import com.softsquared.template.kotlin.src.main.profile.models.ProfileResponse
 import com.softsquared.template.kotlin.src.main.user.adapters.UserPagerAdapter
+import com.softsquared.template.kotlin.src.main.user.models.UnFollowResponse
 
-class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind, R.layout.fragment_user), ProfileFragmentInterface {
+class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind, R.layout.fragment_user), ProfileFragmentInterface, UserFragmentInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,8 +59,14 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
 
         })
 
-        val userId = ApplicationClass.sSharedPreferences.getInt("aUserId", 1)
-        ProfileService(this).tryGetProfile(userId)
+        val aUserId = ApplicationClass.sSharedPreferences.getInt("aUserId", -1)
+        ProfileService(this).tryGetProfile(aUserId)
+        binding.userBtnFollowing.setOnClickListener {
+            if (binding.userBtnFollowing.text == "팔로잉") {
+                val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
+                UserService(this).tryUnFollow(userId, aUserId)
+            }
+        }
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
@@ -108,6 +115,18 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
     }
 
     override fun onGetProfileFailure(message: String) {
+        showCustomToast("오류 : $message")
+    }
+
+    override fun onUnFollowSuccess(response: UnFollowResponse) {
+        if (response.code == 1000) {
+            binding.userBtnFollowing.text = "팔로우"
+            binding.userBtnFollowing.setTextColor(requireContext().getColorStateList(R.color.white))
+            binding.userBtnFollowing.background = requireContext().getDrawable(R.drawable.background_btn_blue)
+        }
+    }
+
+    override fun onUnFollowFailure(message: String) {
         showCustomToast("오류 : $message")
     }
 }

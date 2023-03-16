@@ -1,7 +1,7 @@
 package com.softsquared.template.kotlin.src.main.home.adapters
 
-import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +13,13 @@ import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.databinding.ItemHomePostBinding
 import com.softsquared.template.kotlin.src.comment.CommentActivity
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
+import com.softsquared.template.kotlin.src.main.home.LikeInterface
+import com.softsquared.template.kotlin.src.main.home.LikeService
+import com.softsquared.template.kotlin.src.main.home.models.LikeResponse
 import com.softsquared.template.kotlin.src.main.home.models.ResultHomePost
 import org.jetbrains.anko.image
 
-class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView.Adapter<HomePostAdapter.HomePostViewHolder>() {
+class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView.Adapter<HomePostAdapter.HomePostViewHolder>(), LikeInterface {
 
     inner class HomePostViewHolder(private val homePostItemBinding: ItemHomePostBinding) :
         RecyclerView.ViewHolder(homePostItemBinding.root) {
@@ -72,6 +75,20 @@ class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView
         val binding =
             ItemHomePostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HomePostViewHolder(binding).also { holder ->
+            binding.homePostHeart.setOnClickListener {
+                if (postList[holder.adapterPosition].likeOn.id != 0 && postList[holder.adapterPosition].likeOn.on != 0) {
+                    //좋아요가 눌러져있는 상태
+                }else{
+                    //좋아요가 눌리지않은 상태
+                    LikeService(this).tryPostLike(postList[holder.adapterPosition].postId)
+                    Glide.with(parent)
+                        .load(R.drawable.ic_love_fill)
+                        .into(binding.homePostHeart)
+                    binding.homePostHeartLayout.visibility = View.VISIBLE
+                    binding.homePostHeartText.text = "좋아요 ${postList[holder.adapterPosition].likeCount + 1}개"
+                }
+            }
+            //댓글 화면 전환
             binding.homePostComment.setOnClickListener {
                 val intent = Intent(it.context, CommentActivity::class.java)
                 intent.putExtra("photo", postList[holder.adapterPosition].profilePicture)
@@ -105,5 +122,13 @@ class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView
 
     override fun getItemCount(): Int {
         return postList.size
+    }
+
+    override fun onPostLikeSuccess(response: LikeResponse) {
+        Log.d("좋아요", response.message.toString())
+    }
+
+    override fun onPostLikeFailure(message: String) {
+        Log.d("좋아요", message.toString())
     }
 }

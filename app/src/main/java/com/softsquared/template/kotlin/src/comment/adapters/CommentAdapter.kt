@@ -9,7 +9,7 @@ import com.bumptech.glide.R
 import com.softsquared.template.kotlin.databinding.ItemCommentBinding
 import com.softsquared.template.kotlin.src.comment.models.ResultComment
 
-class CommentAdapter(val commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
+class CommentAdapter(private val commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
 
     inner class CommentViewHolder(private val commentItemBinding: ItemCommentBinding)
         :RecyclerView.ViewHolder(commentItemBinding.root){

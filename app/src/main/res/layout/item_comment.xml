@@ -7,93 +7,145 @@
     android:layout_marginBottom="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/comment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/comment_ring"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/img_ring"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/comment_ring"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/img_ring"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/comment_photo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/comment_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/comment_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="TextView"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/comment_text"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/comment_heart_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_post_heart"
+                app:tint="@color/grayForTab" />
+
+            <TextView
+                android:id="@+id/comment_heart_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/comment_child_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/comment_layout">
+
+        <View
+            android:id="@+id/comment_clild_line"
+            android:layout_width="30dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="80dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/comment_photo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/comment_child_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="답글 %d개 보기"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@+id/comment_clild_line"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/comment_child_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
-        app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/comment_profile_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="TextView"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/comment_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="TextView"
-            android:textColor="@color/black" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/comment_text"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/comment_heart_ic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_post_heart"
-            app:tint="@color/grayForTab" />
-
-        <TextView
-            android:id="@+id/comment_heart_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

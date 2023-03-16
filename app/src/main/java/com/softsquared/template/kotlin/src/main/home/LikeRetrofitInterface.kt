@@ -18,4 +18,10 @@ interface LikeRetrofitInterface {
 
     @POST("/app/posts/scraped/{post-id}")
     fun postScrap(@Path("post-id") postId: Int): Call<LikeResponse>
+
+    @PATCH("/app/posts/scraped/{scrap-id}/{status}")
+    fun deleteScrap(
+        @Path("scrap-id") scrapId: Int,
+        @Path("status") status: Boolean
+    ): Call<LikeResponse>
 }

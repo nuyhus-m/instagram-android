@@ -102,7 +102,10 @@ class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView
                 //스크랩
                 if (postList[holder.adapterPosition].scrapOn.id != 0 && postList[holder.adapterPosition].scrapOn.on != 0) {
                     //스크랩되어있는 상태
-
+                    LikeService(this).tryDeleteScrap(postList[holder.adapterPosition].scrapOn.id)
+                    Glide.with(parent)
+                        .load(R.drawable.ic_scrap)
+                        .into(binding.homePostScrap)
                 } else {
                     //스크랩되어있지 않은 상태
                     LikeService(this).tryPostScrap(postList[holder.adapterPosition].postId)

@@ -21,4 +21,18 @@ class CommentService(val commentFragmentInterface: CommentFragmentInterface) {
             }
         })
     }
+
+    fun tryGetChildComments(parentId: Int) {
+        val commentRetrofitInterface =
+            ApplicationClass.sRetrofit.create(CommentRetrofitInterface::class.java)
+        commentRetrofitInterface.getChildComments(parentId).enqueue(object : Callback<CommentResponse> {
+            override fun onResponse(call: Call<CommentResponse>, response: Response<CommentResponse>) {
+                commentFragmentInterface.onGetCommentsSuccess(response.body() as CommentResponse)
+            }
+
+            override fun onFailure(call: Call<CommentResponse>, t: Throwable) {
+                commentFragmentInterface.onGetCommentsFailure(t.message ?: "통신 오류")
+            }
+        })
+    }
 }

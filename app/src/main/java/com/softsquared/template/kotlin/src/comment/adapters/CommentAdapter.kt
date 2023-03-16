@@ -1,5 +1,6 @@
 package com.softsquared.template.kotlin.src.comment.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,9 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.R
 import com.softsquared.template.kotlin.databinding.ItemCommentBinding
+import com.softsquared.template.kotlin.src.comment.CommentFragmentInterface
+import com.softsquared.template.kotlin.src.comment.CommentService
+import com.softsquared.template.kotlin.src.comment.models.CommentResponse
 import com.softsquared.template.kotlin.src.comment.models.ResultComment
 
-class CommentAdapter(private val commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
+class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>(), CommentFragmentInterface {
 
     inner class CommentViewHolder(private val commentItemBinding: ItemCommentBinding)
         :RecyclerView.ViewHolder(commentItemBinding.root){
@@ -42,8 +46,9 @@ class CommentAdapter(private val commentList: List<ResultComment>) : RecyclerVie
         val binding = ItemCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CommentViewHolder(binding).also { holder ->
             binding.commentChildNum.setOnClickListener {
+//                CommentService(this).tryGetChildComments(commentList[holder.adapterPosition].commentId)
 //                binding.commentChildRv.layoutManager = LinearLayoutManager(parent.context)
-//                binding.commentChildRv.adapter = CommentAdapter()
+//                binding.commentChildRv.adapter = CommentAdapter(commentList)
             }
         }
     }
@@ -54,5 +59,13 @@ class CommentAdapter(private val commentList: List<ResultComment>) : RecyclerVie
 
     override fun getItemCount(): Int {
         return commentList.size
+    }
+
+    override fun onGetCommentsSuccess(response: CommentResponse) {
+        commentList = response.result
+    }
+
+    override fun onGetCommentsFailure(message: String) {
+        Log.d("오류", message)
     }
 }

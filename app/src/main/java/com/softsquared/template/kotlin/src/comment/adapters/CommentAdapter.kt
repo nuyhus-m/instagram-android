@@ -3,6 +3,7 @@ package com.softsquared.template.kotlin.src.comment.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.R
@@ -28,12 +29,23 @@ class CommentAdapter(private val commentList: List<ResultComment>) : RecyclerVie
                 if (comment.likeCount != 0) {
                     commentItemBinding.commentHeartNum.text = comment.likeCount.toString()
                 }
+                //답글
+                if(comment.bigCommentCount == 0) {
+                    commentItemBinding.commentChildLayout.visibility = View.GONE
+                }else {
+                    commentItemBinding.commentChildNum.text = "답글 ${comment.bigCommentCount}개 보기"
+                }
             }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         val binding = ItemCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CommentViewHolder(binding)
+        return CommentViewHolder(binding).also { holder ->
+            binding.commentChildNum.setOnClickListener {
+//                binding.commentChildRv.layoutManager = LinearLayoutManager(parent.context)
+//                binding.commentChildRv.adapter = CommentAdapter()
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {

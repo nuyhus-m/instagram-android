@@ -37,4 +37,19 @@ class LikeService(val likeInterface: LikeInterface) {
 
         })
     }
+
+    fun tryPostScrap(postId: Int) {
+        val likeRetrofitInterface =
+            ApplicationClass.sRetrofit.create(LikeRetrofitInterface::class.java)
+        likeRetrofitInterface.postScrap(postId).enqueue(object : Callback<LikeResponse>{
+            override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
+                likeInterface.onPostLikeSuccess(response.body() as LikeResponse)
+            }
+
+            override fun onFailure(call: Call<LikeResponse>, t: Throwable) {
+                likeInterface.onPostLikeFailure(t.message ?: "통신 오류")
+            }
+
+        })
+    }
 }

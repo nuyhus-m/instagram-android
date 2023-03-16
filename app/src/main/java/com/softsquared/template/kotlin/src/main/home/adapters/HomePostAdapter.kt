@@ -76,6 +76,7 @@ class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView
             ItemHomePostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HomePostViewHolder(binding).also { holder ->
             binding.homePostHeart.setOnClickListener {
+                //좋아요
                 if (postList[holder.adapterPosition].likeOn.id != 0 && postList[holder.adapterPosition].likeOn.on != 0) {
                     //좋아요가 눌러져있는 상태
                     LikeService(this).tryDeleteLike(postList[holder.adapterPosition].likeOn.id)
@@ -95,6 +96,19 @@ class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView
                         .into(binding.homePostHeart)
                     binding.homePostHeartLayout.visibility = View.VISIBLE
                     binding.homePostHeartText.text = "좋아요 ${postList[holder.adapterPosition].likeCount + 1}개"
+                }
+            }
+            binding.homePostScrap.setOnClickListener {
+                //스크랩
+                if (postList[holder.adapterPosition].scrapOn.id != 0 && postList[holder.adapterPosition].scrapOn.on != 0) {
+                    //스크랩되어있는 상태
+
+                } else {
+                    //스크랩되어있지 않은 상태
+                    LikeService(this).tryPostScrap(postList[holder.adapterPosition].postId)
+                    Glide.with(parent)
+                        .load(R.drawable.ic_scrap_fill)
+                        .into(binding.homePostScrap)
                 }
             }
             //댓글 화면 전환

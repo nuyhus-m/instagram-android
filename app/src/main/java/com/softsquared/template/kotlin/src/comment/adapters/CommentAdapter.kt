@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.databinding.ItemCommentBinding
 import com.softsquared.template.kotlin.src.comment.CommentFragmentInterface
 import com.softsquared.template.kotlin.src.comment.CommentService
@@ -51,12 +52,6 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
         return CommentViewHolder(binding).also { holder ->
             binding.commentChildNum.setOnClickListener {
 //                CommentService(this).tryGetChildComments(commentList[holder.adapterPosition].commentId)
-//                Handler(Looper.getMainLooper()).postDelayed({
-//                    binding.commentClildLine.visibility = View.GONE
-//                    binding.commentChildNum.visibility = View.GONE
-//                    binding.commentChildRv.layoutManager = LinearLayoutManager(parent.context)
-//                    binding.commentChildRv.adapter = CommentAdapter(commentList)
-//                }, 5000)
             }
         }
     }
@@ -70,7 +65,7 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
     }
 
     override fun onGetCommentsSuccess(response: CommentResponse) {
-        commentList = response.result
+        Log.d("답글", response.message.toString())
     }
 
     override fun onGetCommentsFailure(message: String) {

@@ -13,7 +13,7 @@ interface CommentRetrofitInterface {
     @GET("/app/posts/comments/{post-id}")
     fun getComments(@Path("post-id") postId: Int): Call<CommentResponse>
 
-    @GET("/app/posts/comments/big-comment")
+    @GET("/app/posts/comments/big-comment/{parent-id}")
     fun getChildComments(@Path("parent-id") parentId: Int): Call<CommentResponse>
 
     @POST("/app/posts/comments")

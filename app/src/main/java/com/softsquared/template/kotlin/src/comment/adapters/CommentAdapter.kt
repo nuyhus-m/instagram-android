@@ -76,6 +76,8 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
                     }else {
                         binding.commentHeartNum.text = "$newNum"
                     }
+
+                    CommentService(this).tryPatchCommentLike(commentList[holder.adapterPosition].likeOn.id)
                 }else {
                     //좋아요 안눌러져 있는 상태
                     Glide.with(parent)

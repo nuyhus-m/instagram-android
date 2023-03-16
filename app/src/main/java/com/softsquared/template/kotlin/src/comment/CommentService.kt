@@ -74,4 +74,18 @@ class CommentService(val commentFragmentInterface: CommentFragmentInterface) {
 
         })
     }
+    fun tryPatchCommentLike(likeId: Int) {
+        val commentRetrofitInterface =
+            ApplicationClass.sRetrofit.create(CommentRetrofitInterface::class.java)
+        commentRetrofitInterface.patchCommentLike(likeId, false).enqueue(object  : Callback<LikeResponse>{
+            override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
+                commentFragmentInterface.onPostCommentLikeSuccess(response.body() as LikeResponse)
+            }
+
+            override fun onFailure(call: Call<LikeResponse>, t: Throwable) {
+                commentFragmentInterface.onPostCommentLikeFailure(t.message ?: "통신 오류")
+            }
+
+        })
+    }
 }

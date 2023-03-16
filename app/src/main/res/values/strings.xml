@@ -111,6 +111,16 @@
     <string name="profile_page2_text3">태그된 사진 및 동영상이 여기에 표시됩니다.</string>
     <string name="user_btn_message">메시지</string>
     <string name="user_page_zero">게시물 없음</string>
+    
+    <!-- Profile Dialog -->
+    <string name="dialog_text1">설정</string>
+    <string name="dialog_text2">내 활동</string>
+    <string name="dialog_text3">보관</string>
+    <string name="dialog_text4">QR 코드</string>
+    <string name="dialog_text5">저장됨</string>
+    <string name="dialog_text6">디지털 자산</string>
+    <string name="dialog_text7">친한 친구</string>
+    <string name="dialog_text8">즐겨찾기</string>
 
     <!-- Comment -->
     <string name="comment_toolbar_title">댓글</string>

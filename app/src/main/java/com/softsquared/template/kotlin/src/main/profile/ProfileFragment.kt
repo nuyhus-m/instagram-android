@@ -1,7 +1,12 @@
 package com.softsquared.template.kotlin.src.main.profile
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -10,6 +15,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseFragment
+import com.softsquared.template.kotlin.databinding.DialogProfileBinding
 import com.softsquared.template.kotlin.databinding.FragmentProfileBinding
 import com.softsquared.template.kotlin.src.main.MainActivity
 import com.softsquared.template.kotlin.src.main.profile.adpaters.ProfilePagerAdapter
@@ -21,6 +27,24 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.profileToolbarMenu.setOnClickListener {
+            val dialog = Dialog(requireContext())
+            val profileDialogBinding : DialogProfileBinding = DialogProfileBinding.inflate(layoutInflater)
+            dialog.setContentView(profileDialogBinding.root)
+            dialog.window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.window?.setGravity(Gravity.BOTTOM)
+            dialog.show()
+
+            profileDialogBinding.dialogSetting.setOnClickListener {
+                val act = activity as MainActivity
+                act.fragmentController(resources.getString(R.string.setting_fragment), t, f)
+            }
+        }
 
         val tabIcon = listOf(R.drawable.ic_profile_tab1, R.drawable.ic_profile_tab2)
 

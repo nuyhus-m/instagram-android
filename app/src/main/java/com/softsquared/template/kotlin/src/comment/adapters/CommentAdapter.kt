@@ -9,11 +9,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.databinding.ItemCommentBinding
 import com.softsquared.template.kotlin.src.comment.CommentFragmentInterface
 import com.softsquared.template.kotlin.src.comment.CommentService
 import com.softsquared.template.kotlin.src.comment.models.CommentResponse
 import com.softsquared.template.kotlin.src.comment.models.ResultComment
+import com.softsquared.template.kotlin.src.main.home.models.LikeResponse
 
 class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>(), CommentFragmentInterface {
 
@@ -33,6 +35,11 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
                 // 댓글
                 commentItemBinding.commentContent.text = comment.comment
                 // 좋아요
+                if (comment.likeOn.id != 0 && comment.likeOn.on != 0) {
+                    Glide.with(itemView)
+                        .load(R.drawable.ic_love_fill)
+                        .into(commentItemBinding.commentHeartIc)
+                }
                 if (comment.likeCount != 0) {
                     commentItemBinding.commentHeartNum.text = comment.likeCount.toString()
                 }
@@ -55,7 +62,30 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
                     binding.commentClildLine.visibility = View.GONE
                     binding.commentChildRv.layoutManager = LinearLayoutManager(parent.context)
                     binding.commentChildRv.adapter = CommentAdapter(commentChildList)
-                }, 1000)
+                }, 500)
+            }
+            binding.commentHeartIc.setOnClickListener {
+                if (commentList[holder.adapterPosition].likeOn.id != 0 && commentList[holder.adapterPosition].likeOn.on != 0) {
+                    //좋아요 눌러져 있는 상태
+                    Glide.with(parent)
+                        .load(R.drawable.ic_love)
+                        .into(binding.commentHeartIc)
+                    val newNum = commentList[holder.adapterPosition].likeCount - 1
+                    if (newNum == 0) {
+                        binding.commentHeartNum.visibility = View.INVISIBLE
+                    }else {
+                        binding.commentHeartNum.text = "$newNum"
+                    }
+                }else {
+                    //좋아요 안눌러져 있는 상태
+                    Glide.with(parent)
+                        .load(R.drawable.ic_love_fill)
+                        .into(binding.commentHeartIc)
+                    val newNum = commentList[holder.adapterPosition].likeCount + 1
+                    binding.commentHeartNum.text = "$newNum"
+
+                    CommentService(this).tryPostCommentLike(commentList[holder.adapterPosition].commentId)
+                }
             }
         }
     }
@@ -69,11 +99,18 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
     }
 
     override fun onGetCommentsSuccess(response: CommentResponse) {
-        Log.d("답글", response.message.toString())
         this.commentChildList = response.result
     }
 
     override fun onGetCommentsFailure(message: String) {
+        Log.d("오류", message)
+    }
+
+    override fun onPostCommentLikeSuccess(response: LikeResponse) {
+        Log.d("댓글 좋아요", "성공")
+    }
+
+    override fun onPostCommentLikeFailure(message: String) {
         Log.d("오류", message)
     }
 }

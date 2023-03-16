@@ -3,6 +3,7 @@ package com.softsquared.template.kotlin.src.comment
 import com.softsquared.template.kotlin.src.comment.models.AddCommentRequest
 import com.softsquared.template.kotlin.src.comment.models.AddCommentResponse
 import com.softsquared.template.kotlin.src.comment.models.CommentResponse
+import com.softsquared.template.kotlin.src.main.home.models.LikeResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -15,4 +16,7 @@ interface CommentRetrofitInterface {
 
     @POST("/app/posts/comments")
     fun postComments(@Body params: AddCommentRequest): Call<AddCommentResponse>
+
+    @POST("/app/posts/comments/like-status/{comment-id}")
+    fun postCommentLike(@Path("comment-id") commentId: Int): Call<LikeResponse>
 }

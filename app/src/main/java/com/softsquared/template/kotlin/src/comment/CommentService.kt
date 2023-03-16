@@ -5,6 +5,7 @@ import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.src.comment.models.AddCommentRequest
 import com.softsquared.template.kotlin.src.comment.models.AddCommentResponse
 import com.softsquared.template.kotlin.src.comment.models.CommentResponse
+import com.softsquared.template.kotlin.src.main.home.models.LikeResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,6 +58,20 @@ class CommentService(val commentFragmentInterface: CommentFragmentInterface) {
             override fun onFailure(call: Call<AddCommentResponse>, t: Throwable) {
                 Log.d("댓글달기", t.message.toString())
             }
+        })
+    }
+    fun tryPostCommentLike(commentId: Int) {
+        val commentRetrofitInterface =
+            ApplicationClass.sRetrofit.create(CommentRetrofitInterface::class.java)
+        commentRetrofitInterface.postCommentLike(commentId).enqueue(object  : Callback<LikeResponse>{
+            override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
+                commentFragmentInterface.onPostCommentLikeSuccess(response.body() as LikeResponse)
+            }
+
+            override fun onFailure(call: Call<LikeResponse>, t: Throwable) {
+                commentFragmentInterface.onPostCommentLikeFailure(t.message ?: "통신 오류")
+            }
+
         })
     }
 }

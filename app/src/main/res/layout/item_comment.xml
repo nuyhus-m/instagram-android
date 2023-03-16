@@ -84,8 +84,8 @@
             android:id="@+id/linearLayout5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="30dp"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,10 +93,9 @@
 
             <ImageView
                 android:id="@+id/comment_heart_ic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_post_heart"
-                app:tint="@color/grayForTab" />
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/ic_love" />
 
             <TextView
                 android:id="@+id/comment_heart_num"

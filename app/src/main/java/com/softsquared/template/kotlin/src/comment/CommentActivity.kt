@@ -3,6 +3,7 @@ package com.softsquared.template.kotlin.src.comment
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -12,6 +13,7 @@ import com.softsquared.template.kotlin.databinding.ActivityCommentBinding
 import com.softsquared.template.kotlin.src.comment.adapters.CommentAdapter
 import com.softsquared.template.kotlin.src.comment.models.AddCommentRequest
 import com.softsquared.template.kotlin.src.comment.models.CommentResponse
+import com.softsquared.template.kotlin.src.main.home.models.LikeResponse
 
 
 class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBinding::inflate), CommentFragmentInterface {
@@ -80,5 +82,11 @@ class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBind
 
     override fun onGetCommentsFailure(message: String) {
         showCustomToast("오류 : $message")
+    }
+
+    override fun onPostCommentLikeSuccess(response: LikeResponse) {
+    }
+
+    override fun onPostCommentLikeFailure(message: String) {
     }
 }

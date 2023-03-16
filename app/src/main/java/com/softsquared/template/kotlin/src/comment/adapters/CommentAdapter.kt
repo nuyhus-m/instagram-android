@@ -1,5 +1,8 @@
 package com.softsquared.template.kotlin.src.comment.adapters
 
+import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +16,7 @@ import com.softsquared.template.kotlin.src.comment.CommentFragmentInterface
 import com.softsquared.template.kotlin.src.comment.CommentService
 import com.softsquared.template.kotlin.src.comment.models.CommentResponse
 import com.softsquared.template.kotlin.src.comment.models.ResultComment
+import com.softsquared.template.kotlin.src.main.MainActivity
 
 class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>(), CommentFragmentInterface {
 
@@ -47,8 +51,12 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
         return CommentViewHolder(binding).also { holder ->
             binding.commentChildNum.setOnClickListener {
 //                CommentService(this).tryGetChildComments(commentList[holder.adapterPosition].commentId)
-//                binding.commentChildRv.layoutManager = LinearLayoutManager(parent.context)
-//                binding.commentChildRv.adapter = CommentAdapter(commentList)
+//                Handler(Looper.getMainLooper()).postDelayed({
+//                    binding.commentClildLine.visibility = View.GONE
+//                    binding.commentChildNum.visibility = View.GONE
+//                    binding.commentChildRv.layoutManager = LinearLayoutManager(parent.context)
+//                    binding.commentChildRv.adapter = CommentAdapter(commentList)
+//                }, 5000)
             }
         }
     }

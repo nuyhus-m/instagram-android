@@ -1,13 +1,18 @@
 package com.softsquared.template.kotlin.src.comment
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.config.BaseActivity
 import com.softsquared.template.kotlin.databinding.ActivityCommentBinding
 import com.softsquared.template.kotlin.src.comment.adapters.CommentAdapter
+import com.softsquared.template.kotlin.src.comment.models.AddCommentRequest
 import com.softsquared.template.kotlin.src.comment.models.CommentResponse
+
 
 class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBinding::inflate), CommentFragmentInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +38,39 @@ class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBind
         Glide.with(this)
             .load(profilePhoto)
             .into(binding.commentInputPhoto)
+
+        binding.commentBtnUpload.setOnClickListener {
+            if(binding.commentEt.text != null) {
+                val comment = binding.commentEt.text.toString()
+                val request = AddCommentRequest(comment, 0, postId)
+                CommentService(this).tryPostComments(request)
+                hideKeyboard(this)
+                binding.commentEt.clearFocus()
+                binding.commentEt.text!!.clear()
+
+                //새로고침
+                finish() //인텐트 종료
+                overridePendingTransition(0, 0) //인텐트 효과 없애기
+                val intent = intent //인텐트
+                startActivity(intent) //액티비티 열기
+                overridePendingTransition(0, 0) //인텐트 효과 없애기
+            }
+        }
+        binding.commentSwipe.setOnRefreshListener {
+            //새로고침
+            finish() //인텐트 종료
+            overridePendingTransition(0, 0) //인텐트 효과 없애기
+            val intent = intent //인텐트
+            startActivity(intent) //액티비티 열기
+            overridePendingTransition(0, 0) //인텐트 효과 없애기
+
+            binding.commentSwipe.isRefreshing = false
+        }
+    }
+
+    private fun hideKeyboard(activity: Activity){
+        val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(activity.window.decorView.applicationWindowToken, 0)
     }
 
     override fun onGetCommentsSuccess(response: CommentResponse) {

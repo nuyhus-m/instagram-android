@@ -120,8 +120,8 @@
             android:layout_width="30dp"
             android:layout_height="1dp"
             android:layout_marginStart="80dp"
+            android:layout_marginTop="27dp"
             android:background="?android:attr/listDivider"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="답글 %d개 보기"
             android:textSize="11sp"
             app:layout_constraintStart_toEndOf="@+id/comment_clild_line"
@@ -140,8 +140,8 @@
             android:id="@+id/comment_child_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

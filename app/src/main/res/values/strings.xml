@@ -9,6 +9,7 @@
     <string name="search1_fragment">search1</string>
     <string name="search2_fragment">search2</string>
     <string name="profile_fragment">profile</string>
+    <string name="setting_fragment">setting</string>
     <string name="post_fragment">post</string>
     <string name="list_fragment">list</string>
     <string name="user_fragment">user</string>
@@ -131,6 +132,25 @@
     <string name="upload_tag_user">사람 태그하기</string>
     <string name="upload_tag_location">위치 추가</string>
     <string name="upload_tag_music">음악 추가</string>
+
+    <!-- setting -->
+    <string name="setting_toolbar_title">설정</string>
+    <string name="setting_text1">친구 팔로우 및 초대</string>
+    <string name="setting_text2">알림</string>
+    <string name="setting_text3">개인정보 보호</string>
+    <string name="setting_text4">관리 감독</string>
+    <string name="setting_text5">보안</string>
+    <string name="setting_text6">광고</string>
+    <string name="setting_text7">계정</string>
+    <string name="setting_text8">도움말</string>
+    <string name="setting_text9">소개</string>
+    <string name="setting_text10">테마</string>
+    <string name="setting_center">계정 센터</string>
+    <string name="setting_center_sub">스토리 및 게시글 공유, 로그인 등 Instagram, Facebook 앱, Messenger 간에 연결된 환경에 대한 설정을 관리하세요.</string>
+    <string name="setting_login">로그인</string>
+    <string name="setting_add">계정 추가</string>
+    <string name="setting_logout">로그아웃</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

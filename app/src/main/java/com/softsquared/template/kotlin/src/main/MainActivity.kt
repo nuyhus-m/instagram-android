@@ -21,6 +21,7 @@ import com.softsquared.template.kotlin.src.main.profile.models.ProfileResponse
 import com.softsquared.template.kotlin.src.main.search.Search1Fragment
 import com.softsquared.template.kotlin.src.main.search.Search2Fragment
 import com.softsquared.template.kotlin.src.main.user.UserFragment
+import com.softsquared.template.kotlin.src.setting.SettingFragment
 import com.softsquared.template.kotlin.src.start.join.*
 import com.softsquared.template.kotlin.src.start.login.LoginFragment
 
@@ -34,13 +35,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         binding.mainBtmNav.itemIconTintList = null
 
         val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
-        ProfileService(this).tryGetProfile(userId)
+//        ProfileService(this).tryGetProfile(userId)
 
         binding.mainBtmNav.run {
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.menu_main_btm_nav_home -> {
-                        fragmentController(resources.getString(R.string.home_fragment), f, f)
+                        fragmentController(resources.getString(R.string.setting_fragment), f, f)
                     }
                     R.id.menu_main_btm_nav_search -> {
                         fragmentController(resources.getString(R.string.search1_fragment), f, f)
@@ -85,6 +86,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
             resources.getString(R.string.post_fragment) -> {
                 currentFragment = PostFragment()
+            }
+            resources.getString(R.string.setting_fragment) -> {
+                currentFragment = SettingFragment()
             }
         }
 

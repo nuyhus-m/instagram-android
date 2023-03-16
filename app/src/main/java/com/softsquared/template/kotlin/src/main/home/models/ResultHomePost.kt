@@ -16,5 +16,8 @@ data class ResultHomePost(
     val profilePicture: String,
     val scrapOn: ScrapOn,
     val tagWord: List<String?>,
-    val updatedAt: String
+    val updatedAt: String,
+    val userFollowOn: Int,
+    val userId: Int,
+    val userStoryOn: Int
 )

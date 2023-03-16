@@ -82,32 +82,35 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/home_post_heart"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_post_heart"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_love"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/home_post_comment"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_post_comment"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="18dp"
+            android:src="@drawable/ic_comment"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/home_post_heart"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/home_post_dm"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_post_dm"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="18dp"
+            android:src="@drawable/ic_dm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/home_post_comment"
             app:layout_constraintTop_toTopOf="parent" />
@@ -119,16 +122,16 @@
             app:ci_drawable="@drawable/indicator_selected_dot"
             app:ci_drawable_unselected="@drawable/indicator_unselected_dot"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/home_post_scrap"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/ic_post_scrap"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_scrap"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

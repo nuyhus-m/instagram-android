@@ -14,29 +14,52 @@ import com.softsquared.template.kotlin.databinding.ItemHomePostBinding
 import com.softsquared.template.kotlin.src.comment.CommentActivity
 import com.softsquared.template.kotlin.src.main.home.HomeFragment
 import com.softsquared.template.kotlin.src.main.home.models.ResultHomePost
+import org.jetbrains.anko.image
 
-class HomePostAdapter(val postList: List<ResultHomePost>) : RecyclerView.Adapter<HomePostAdapter.HomePostViewHolder>() {
+class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView.Adapter<HomePostAdapter.HomePostViewHolder>() {
 
     inner class HomePostViewHolder(private val homePostItemBinding: ItemHomePostBinding) :
         RecyclerView.ViewHolder(homePostItemBinding.root) {
         fun bind(post: ResultHomePost) {
+            //프로필 사진
             Glide.with(itemView)
                 .load(post.profilePicture)
                 .into(homePostItemBinding.homePostProfile)
-
+            //스토리
+            if(post.userStoryOn == 0) {
+                homePostItemBinding.homePostProfileRing.visibility = View.INVISIBLE
+            }
+            //닉네임
             homePostItemBinding.homePostNickname.text = post.profileName
+            //좋아요
+            if (post.likeOn.id != 0 && post.likeOn.on != 0) {
+                Glide.with(itemView)
+                    .load(R.drawable.ic_love_fill)
+                    .into(homePostItemBinding.homePostHeart)
+            }
+            //스크랩
+            if (post.scrapOn.id != 0 && post.scrapOn.on != 0) {
+                Glide.with(itemView)
+                    .load(R.drawable.ic_scrap_fill)
+                    .into(homePostItemBinding.homePostScrap)
+            }
+            //좋아요 개수
             if(post.likeCount == 0) {
                 homePostItemBinding.homePostHeartLayout.visibility = View.GONE
             } else {
                 homePostItemBinding.homePostHeartText.text = "좋아요 ${post.likeCount}개"
             }
+            //글 닉네임
             homePostItemBinding.homePostNickNameText.text = post.profileName
+            //글 내용
             homePostItemBinding.homePostContent.text = post.content
+            //댓글 모두 보기
             homePostItemBinding.homePostCommentText.text = "댓글 모두 보기"
+            //작성일
             val month = post.createdAt.substring(5,7).toInt()
             val day = post.createdAt.substring(8,10).toInt()
             homePostItemBinding.homePostDate.text = "${month}월 ${day}일"
-
+            //게시물 사진
             homePostItemBinding.homePostPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
             homePostItemBinding.homePostPager.adapter = HomePostPagerAdapter(post.photos)
 

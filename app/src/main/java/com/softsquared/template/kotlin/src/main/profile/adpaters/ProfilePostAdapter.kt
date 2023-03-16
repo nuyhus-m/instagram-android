@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.databinding.ItemProfilePostBinding
 import com.softsquared.template.kotlin.src.main.MainActivity
 
@@ -20,7 +21,7 @@ class ProfilePostAdapter(private val postList: List<String>, val act: MainActivi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfilePostViewHolder {
         val binding = ItemProfilePostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ProfilePostViewHolder(binding).also {
+        return ProfilePostViewHolder(binding).also { holder ->
             binding.profilePostPhoto.setOnClickListener {
                 act.fragmentController("post", true, true)
             }

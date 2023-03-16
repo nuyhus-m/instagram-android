@@ -10,11 +10,11 @@ data class ResultHomePost(
     val likeOn: LikeOn,
     val likeShowStatus: Int,
     val photos: List<Photo>,
-    val place: Any,
+    val place: String?,
     val postId: Int,
     val profileName: String,
     val profilePicture: String,
     val scrapOn: ScrapOn,
-    val tagWord: List<Any>,
+    val tagWord: List<String?>,
     val updatedAt: String
 )

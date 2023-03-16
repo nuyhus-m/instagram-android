@@ -78,6 +78,15 @@ class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView
             binding.homePostHeart.setOnClickListener {
                 if (postList[holder.adapterPosition].likeOn.id != 0 && postList[holder.adapterPosition].likeOn.on != 0) {
                     //좋아요가 눌러져있는 상태
+                    LikeService(this).tryDeleteLike(postList[holder.adapterPosition].likeOn.id)
+                    Glide.with(parent)
+                        .load(R.drawable.ic_love)
+                        .into(binding.homePostHeart)
+                    if (postList[holder.adapterPosition].likeCount - 1 > 0) {
+                        binding.homePostHeartText.text = "좋아요 ${postList[holder.adapterPosition].likeCount - 1}개"
+                    } else {
+                        binding.homePostHeartLayout.visibility = View.GONE
+                    }
                 }else{
                     //좋아요가 눌리지않은 상태
                     LikeService(this).tryPostLike(postList[holder.adapterPosition].postId)

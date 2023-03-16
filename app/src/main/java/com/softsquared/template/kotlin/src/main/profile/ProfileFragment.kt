@@ -41,6 +41,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             dialog.show()
 
             profileDialogBinding.dialogSetting.setOnClickListener {
+                dialog.dismiss()
                 val act = activity as MainActivity
                 act.fragmentController(resources.getString(R.string.setting_fragment), t, f)
             }

@@ -31,7 +31,9 @@ class CommentService(val commentFragmentInterface: CommentFragmentInterface) {
             ApplicationClass.sRetrofit.create(CommentRetrofitInterface::class.java)
         commentRetrofitInterface.getChildComments(parentId).enqueue(object : Callback<CommentResponse> {
             override fun onResponse(call: Call<CommentResponse>, response: Response<CommentResponse>) {
-                commentFragmentInterface.onGetCommentsSuccess(response.body() as CommentResponse)
+                val result = response.body() as CommentResponse
+                Log.d("답글","메시지: ${result.message}")
+                commentFragmentInterface.onGetCommentsSuccess(result)
             }
 
             override fun onFailure(call: Call<CommentResponse>, t: Throwable) {

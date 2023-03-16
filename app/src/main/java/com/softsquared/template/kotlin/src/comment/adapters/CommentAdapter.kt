@@ -1,6 +1,5 @@
 package com.softsquared.template.kotlin.src.comment.adapters
 
-import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -10,16 +9,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.R
-import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.databinding.ItemCommentBinding
 import com.softsquared.template.kotlin.src.comment.CommentFragmentInterface
 import com.softsquared.template.kotlin.src.comment.CommentService
 import com.softsquared.template.kotlin.src.comment.models.CommentResponse
 import com.softsquared.template.kotlin.src.comment.models.ResultComment
-import com.softsquared.template.kotlin.src.main.MainActivity
 
 class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>(), CommentFragmentInterface {
+
+    var commentChildList: List<ResultComment> = listOf()
 
     inner class CommentViewHolder(private val commentItemBinding: ItemCommentBinding)
         :RecyclerView.ViewHolder(commentItemBinding.root){
@@ -51,7 +49,13 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
         val binding = ItemCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CommentViewHolder(binding).also { holder ->
             binding.commentChildNum.setOnClickListener {
-//                CommentService(this).tryGetChildComments(commentList[holder.adapterPosition].commentId)
+                CommentService(this).tryGetChildComments(commentList[holder.adapterPosition].commentId)
+                Handler(Looper.getMainLooper()).postDelayed({
+                    binding.commentChildNum.visibility = View.GONE
+                    binding.commentClildLine.visibility = View.GONE
+                    binding.commentChildRv.layoutManager = LinearLayoutManager(parent.context)
+                    binding.commentChildRv.adapter = CommentAdapter(commentChildList)
+                }, 1000)
             }
         }
     }
@@ -66,6 +70,7 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
 
     override fun onGetCommentsSuccess(response: CommentResponse) {
         Log.d("답글", response.message.toString())
+        this.commentChildList = response.result
     }
 
     override fun onGetCommentsFailure(message: String) {

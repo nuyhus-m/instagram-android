@@ -32,10 +32,6 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
             val dialog = Dialog(requireContext())
             val logoutDialogBinding : DialogLogoutBinding = DialogLogoutBinding.inflate(layoutInflater)
             dialog.setContentView(logoutDialogBinding.root)
-//            dialog.window?.setLayout(
-//                ViewGroup.LayoutParams.MATCH_PARENT,
-//                ViewGroup.LayoutParams.WRAP_CONTENT
-//            )
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialog.show()
 

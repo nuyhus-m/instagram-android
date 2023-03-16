@@ -81,6 +81,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
             act.fragmentController(resources.getString(R.string.list_fragment), f, f)
         }
+
+        val editor = ApplicationClass.sSharedPreferences.edit()
+        editor.putInt("a", 0)
+        editor.apply()
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {

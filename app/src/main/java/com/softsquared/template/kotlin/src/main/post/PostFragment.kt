@@ -25,8 +25,12 @@ class PostFragment : BaseFragment<FragmentPostBinding>(FragmentPostBinding::bind
             act.fragmentRemoveBackStack(resources.getString(R.string.post_fragment))
         }
 
-        val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
-        ProfilePostService(this).tryGetProfilePost(userId)
+        val id : Int = if(ApplicationClass.sSharedPreferences.getInt("a", -1) == 0) {
+            ApplicationClass.sSharedPreferences.getInt("userId", -1)
+        } else {
+            ApplicationClass.sSharedPreferences.getInt("aUserId", -1)
+        }
+        ProfilePostService(this).tryGetProfilePost(id)
     }
 
     override fun onGetProfilePostSuccess(response: ProfilePostResponse) {

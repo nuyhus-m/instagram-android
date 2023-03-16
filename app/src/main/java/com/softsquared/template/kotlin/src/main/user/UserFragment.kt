@@ -125,6 +125,9 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
                     "${response.result.connected_friend_profiles[0].nickname}님, ${response.result.connected_friend_profiles[1].nickname}님 외 ${response.result.connected_count}명이 팔로우합니다."
             }
         }
+        val editor = ApplicationClass.sSharedPreferences.edit()
+        editor.putInt("a", 1)
+        editor.apply()
     }
 
     override fun onGetProfileFailure(message: String) {

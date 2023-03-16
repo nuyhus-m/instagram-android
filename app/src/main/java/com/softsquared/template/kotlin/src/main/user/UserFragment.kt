@@ -77,24 +77,31 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
+        //프로필 닉네임
         binding.userNickName.text = response.result.nickname
+        //프로필 사진
         Glide.with(this)
             .load(response.result.profile_image_url)
             .into(binding.userImg)
+        //게시물 개수
         binding.userPostNum.text = response.result.post_count.toString()
+        //팔로워 수
         binding.userFollowerNum.text = response.result.follower_count.toString()
+        //팔로잉 수
         binding.userFollowingNum.text = response.result.following_count.toString()
-        val followStatus = ApplicationClass.sSharedPreferences.getInt("aUserFollow", -1)
-        if (followStatus == 0) {
+        //팔로우/팔로잉 버튼
+        if (response.result.follow_status == 0) {
             binding.userBtnFollowing.text = "팔로우"
             binding.userBtnFollowing.setTextColor(requireContext().getColorStateList(R.color.white))
             binding.userBtnFollowing.background = requireContext().getDrawable(R.drawable.background_btn_blue)
         }
+        //소개글
         if(response.result.introduce != null){
             binding.userIntroduce.text = response.result.introduce.toString()
         } else {
             binding.userIntroduce.visibility = View.GONE
         }
+        //연결된 유저
         when(response.result.connected_count) {
             0 -> binding.userConnected.visibility = View.GONE
             1 -> {
@@ -125,6 +132,7 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
                     "${response.result.connected_friend_profiles[0].nickname}님, ${response.result.connected_friend_profiles[1].nickname}님 외 ${response.result.connected_count}명이 팔로우합니다."
             }
         }
+        //게시물 위해 저장하는 키워드(로그인한 유저가 아니라는 뜻)
         val editor = ApplicationClass.sSharedPreferences.edit()
         editor.putInt("a", 1)
         editor.apply()

@@ -32,7 +32,6 @@ class FollowingAdapter(private val followingList: List<Following>, private val a
             binding.followingLayout.setOnClickListener {
                 val editor = ApplicationClass.sSharedPreferences.edit()
                 editor.putInt("aUserId", followingList[holder.adapterPosition].user_id)
-                editor.putInt("aUserFollow", followingList[holder.adapterPosition].follow_status)
                 editor.putInt("tabItem", 1)
                 editor.apply()
                 act.fragmentController("user", false, true)

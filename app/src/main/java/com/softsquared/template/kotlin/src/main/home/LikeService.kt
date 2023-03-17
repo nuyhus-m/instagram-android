@@ -23,10 +23,10 @@ class LikeService(val likeInterface: LikeInterface) {
         })
     }
 
-    fun tryDeleteLike(likeId: Int) {
+    fun tryDeleteLike(likeId: Int, status: Boolean) {
         val likeRetrofitInterface =
             ApplicationClass.sRetrofit.create(LikeRetrofitInterface::class.java)
-        likeRetrofitInterface.deleteLike(likeId, false).enqueue(object : Callback<LikeResponse>{
+        likeRetrofitInterface.deleteLike(likeId, status).enqueue(object : Callback<LikeResponse>{
             override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
                 likeInterface.onPostLikeSuccess(response.body() as LikeResponse)
             }

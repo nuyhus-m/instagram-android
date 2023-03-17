@@ -77,25 +77,29 @@ class HomePostAdapter(private val postList: List<ResultHomePost>) : RecyclerView
         return HomePostViewHolder(binding).also { holder ->
             binding.homePostHeart.setOnClickListener {
                 //좋아요
-                if (postList[holder.adapterPosition].likeOn.id != 0 && postList[holder.adapterPosition].likeOn.on != 0) {
-                    //좋아요가 눌러져있는 상태
-                    LikeService(this).tryDeleteLike(postList[holder.adapterPosition].likeOn.id)
-                    Glide.with(parent)
-                        .load(R.drawable.ic_love)
-                        .into(binding.homePostHeart)
-                    if (postList[holder.adapterPosition].likeCount - 1 > 0) {
-                        binding.homePostHeartText.text = "좋아요 ${postList[holder.adapterPosition].likeCount - 1}개"
-                    } else {
-                        binding.homePostHeartLayout.visibility = View.GONE
-                    }
-                }else{
-                    //좋아요가 눌리지않은 상태
+                if (postList[holder.adapterPosition].likeOn.id == 0 && postList[holder.adapterPosition].likeOn.on == 0) {
                     LikeService(this).tryPostLike(postList[holder.adapterPosition].postId)
-                    Glide.with(parent)
-                        .load(R.drawable.ic_love_fill)
-                        .into(binding.homePostHeart)
-                    binding.homePostHeartLayout.visibility = View.VISIBLE
-                    binding.homePostHeartText.text = "좋아요 ${postList[holder.adapterPosition].likeCount + 1}개"
+                }else {
+                    if (postList[holder.adapterPosition].likeOn.id != 0 && postList[holder.adapterPosition].likeOn.on != 0) {
+                        //좋아요가 눌러져있는 상태
+                        LikeService(this).tryDeleteLike(postList[holder.adapterPosition].likeOn.id, false)
+                        Glide.with(parent)
+                            .load(R.drawable.ic_love)
+                            .into(binding.homePostHeart)
+                        if (postList[holder.adapterPosition].likeCount - 1 > 0) {
+                            binding.homePostHeartText.text = "좋아요 ${postList[holder.adapterPosition].likeCount - 1}개"
+                        } else {
+                            binding.homePostHeartLayout.visibility = View.GONE
+                        }
+                    }else{
+                        //좋아요가 눌리지않은 상태
+                        LikeService(this).tryDeleteLike(postList[holder.adapterPosition].likeOn.id, true)
+                        Glide.with(parent)
+                            .load(R.drawable.ic_love_fill)
+                            .into(binding.homePostHeart)
+                        binding.homePostHeartLayout.visibility = View.VISIBLE
+                        binding.homePostHeartText.text = "좋아요 ${postList[holder.adapterPosition].likeCount + 1}개"
+                    }
                 }
             }
             binding.homePostScrap.setOnClickListener {

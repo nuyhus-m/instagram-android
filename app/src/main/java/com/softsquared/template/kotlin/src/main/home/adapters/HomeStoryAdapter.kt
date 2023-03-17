@@ -13,7 +13,7 @@ class HomeStoryAdapter(private val storyList: List<ResultHomeStory>) : RecyclerV
     inner class HomeStoryViewHolder(private val homeStoryItemBinding: ItemHomeStoryBinding) :
         RecyclerView.ViewHolder(homeStoryItemBinding.root) {
         fun bind(story: ResultHomeStory, pos: Int) {
-            if (pos == 0) {
+            if (story.self_status == 1) {
                 homeStoryItemBinding.homeStoryNickname.text = "내 스토리"
             } else {
                 homeStoryItemBinding.homeStoryNickname.text = story.nickname

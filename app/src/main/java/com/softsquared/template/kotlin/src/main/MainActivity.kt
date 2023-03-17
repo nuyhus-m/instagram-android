@@ -34,6 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         super.onCreate(savedInstanceState)
 
         binding.mainBtmNav.itemIconTintList = null
+        binding.mainBtmProfileRing.visibility = View.INVISIBLE
 
         val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
         ProfileService(this).tryGetProfile(userId)
@@ -42,19 +43,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.menu_main_btm_nav_home -> {
+                        binding.mainBtmProfileRing.visibility = View.INVISIBLE
                         fragmentController(resources.getString(R.string.home_fragment), f, f)
                     }
                     R.id.menu_main_btm_nav_search -> {
+                        binding.mainBtmProfileRing.visibility = View.INVISIBLE
                         fragmentController(resources.getString(R.string.search1_fragment), f, f)
                     }
                     R.id.menu_main_btm_nav_plus -> {
+                        binding.mainBtmProfileRing.visibility = View.INVISIBLE
                         startActivity(Intent(this@MainActivity, AddActivity::class.java))
                         finish()
                     }
                     R.id.menu_main_btm_nav_reels -> {
-
+                        binding.mainBtmProfileRing.visibility = View.INVISIBLE
                     }
                     R.id.menu_main_btm_nav_profile -> {
+                        binding.mainBtmProfileRing.visibility = View.VISIBLE
                         fragmentController(resources.getString(R.string.profile_fragment), f, f)
                     }
                 }

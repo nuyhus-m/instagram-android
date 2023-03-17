@@ -66,6 +66,7 @@
                         android:ems="10"
                         android:hint="@string/list_search_hint"
                         android:inputType="textPersonName"
+                        android:textCursorDrawable="@drawable/background_et_cursor_slim"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

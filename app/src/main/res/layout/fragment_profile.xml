@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/profile_toolbar_add"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/ic_toolbar_add"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -44,8 +44,8 @@
 
             <ImageView
                 android:id="@+id/profile_toolbar_menu"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="20dp"
                 android:src="@drawable/ic_toolbar_menu"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -185,7 +185,7 @@
                 <Button
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="33dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_btn_gray"
                     android:text="@string/profile_btn1"
@@ -194,7 +194,7 @@
                 <Button
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="33dp"
                     android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_btn_gray"
@@ -235,7 +235,7 @@
                 <ImageView
                     android:id="@+id/profile_story_up"
                     android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_profile_story_up" />
             </LinearLayout>
@@ -244,8 +244,7 @@
                 android:id="@+id/profile_story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
+                android:layout_marginStart="20dp">
 
                 <TextView
                     android:id="@+id/textView11"

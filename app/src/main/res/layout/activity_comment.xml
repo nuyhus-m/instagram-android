@@ -10,7 +10,6 @@
         android:id="@+id/comment_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -226,6 +225,8 @@
                         android:layout_weight="1"
                         android:background="@android:color/transparent"
                         android:hint="@string/comment_input"
+                        android:textColorHint="@color/grayForBtn"
+                        android:textCursorDrawable="@drawable/background_et_cursor_slim"
                         android:textSize="12sp" />
 
                     <TextView

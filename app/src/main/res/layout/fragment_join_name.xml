@@ -56,7 +56,7 @@
                 android:background="@android:color/transparent"
                 android:hint="@string/joinName_et"
                 android:inputType="text"
-                android:paddingTop="5dp"
+                android:paddingTop="7dp"
                 android:paddingBottom="5dp"
                 android:textCursorDrawable="@drawable/background_et_cursor"
                 android:textSize="14sp" />

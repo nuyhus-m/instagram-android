@@ -114,6 +114,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
         binding.profileNickName.text = response.result.nickname
+        if(response.result.story_status == 1) {
+            binding.profileRing.visibility = View.INVISIBLE
+        }
         Glide.with(this)
             .load(response.result.profile_image_url)
             .into(binding.profileImg)

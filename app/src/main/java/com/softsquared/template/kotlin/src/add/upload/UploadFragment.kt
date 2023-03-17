@@ -20,10 +20,10 @@ class UploadFragment : BaseFragment<FragmentUploadBinding>(FragmentUploadBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val photoUrl = listOf(
+            "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/4.png",
             "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/1.jpg",
             "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/2.png",
-            "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/3.png",
-            "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/4.png"
+            "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/3.png"
         )
         val act = activity as AddActivity
 
@@ -38,7 +38,7 @@ class UploadFragment : BaseFragment<FragmentUploadBinding>(FragmentUploadBinding
 
         binding.uploadToolbarBtnCheck.setOnClickListener {
 
-            val i = (ApplicationClass.sSharedPreferences.getInt("gallery", 0) + 1) % 4 -1
+            val i = (ApplicationClass.sSharedPreferences.getInt("gallery", 0) + 1) % 4
 
 
             val content = binding.uploadContent.text.toString()

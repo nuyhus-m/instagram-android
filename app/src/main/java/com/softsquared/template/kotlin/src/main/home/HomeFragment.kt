@@ -1,7 +1,6 @@
 package com.softsquared.template.kotlin.src.main.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softsquared.template.kotlin.R
@@ -12,7 +11,6 @@ import com.softsquared.template.kotlin.src.main.home.adapters.HomePostAdapter
 import com.softsquared.template.kotlin.src.main.home.adapters.HomeStoryAdapter
 import com.softsquared.template.kotlin.src.main.home.models.HomePostResponse
 import com.softsquared.template.kotlin.src.main.home.models.HomeStoryResponse
-import com.softsquared.template.kotlin.src.main.home.models.ResultHomePost
 import com.softsquared.template.kotlin.src.main.home.models.ResultHomeStory
 
 class HomeFragment :
@@ -41,18 +39,31 @@ class HomeFragment :
     }
 
     override fun onGetHomeStoriesSuccess(response: HomeStoryResponse) {
-        binding.homeRvStory.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        if (response.result != null) {
-            binding.homeRvStory.adapter = HomeStoryAdapter(response.result)
-            if (response.result.isEmpty()){
-                val nickName = ApplicationClass.sSharedPreferences.getString("profileNickName", "default")!!
-                val photo = ApplicationClass.sSharedPreferences.getString("profilePhoto", "##")!!
-                val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
-                val storyList = listOf(ResultHomeStory(nickName, photo, 1, "nothing", userId, 1))
-                binding.homeRvStory.adapter = HomeStoryAdapter(storyList)
+        var selfPosition = -1
+        for (i in 0 until response.result.size){
+            if (response.result[i].self_status == 1) {
+                selfPosition = i
+                break
             }
         }
+        //본인 계정
+        val nickName =
+            ApplicationClass.sSharedPreferences.getString("profileNickName", "default")!!
+        val photo = ApplicationClass.sSharedPreferences.getString("profilePhoto", "##")!!
+        val userId = ApplicationClass.sSharedPreferences.getInt("userId", -1)
+        val storySelf = ResultHomeStory(nickName, photo, 1, "nothing", userId, 1)
+        //정렬
+        val storyList: MutableList<ResultHomeStory> = response.result as MutableList<ResultHomeStory>
+        if (selfPosition != -1) {
+            storyList[0] = response.result[selfPosition]
+            storyList[selfPosition] = response.result[0]
+        } else {
+            storyList.add(0, storySelf)
+        }
+
+        binding.homeRvStory.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.homeRvStory.adapter = HomeStoryAdapter(storyList)
     }
 
     override fun onGetHomeStoriesFailure(message: String) {

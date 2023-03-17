@@ -43,8 +43,10 @@ class UploadFragment : BaseFragment<FragmentUploadBinding>(FragmentUploadBinding
 
         binding.uploadToolbarBtnCheck.setOnClickListener {
 
+            val i = ApplicationClass.sSharedPreferences.getInt("gallery", 0)
+
             val content = binding.uploadContent.text.toString()
-            val photo = Photo("https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/1.jpg", listOf())
+            val photo = Photo("https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/${i+1}.jpg", listOf())
             val request = UploadRequest(1,content,1, listOf(photo), listOf(),null)
             UploadService(this).tryUploadPosts(request)
 

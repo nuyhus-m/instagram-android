@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.databinding.FragmentGalleryBinding
 import com.softsquared.template.kotlin.databinding.ItemGalleryBinding
 import com.softsquared.template.kotlin.src.add.gallery.GalleryInterface
@@ -24,6 +25,9 @@ class GalleryAdapter(private val uriArr: ArrayList<String>, private val galleryI
         return GalleryViewHolder(binding).also { holder ->
             binding.galleyItemImg.setOnClickListener {
                 galleryInterface.changeGallery(uriArr[holder.adapterPosition])
+                val editor = ApplicationClass.sSharedPreferences.edit()
+                editor.putInt("gallery", holder.adapterPosition)
+                editor.apply()
             }
         }
     }

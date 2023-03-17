@@ -42,13 +42,11 @@ class UploadFragment : BaseFragment<FragmentUploadBinding>(FragmentUploadBinding
             .into(binding.uploadPhoto)
 
         binding.uploadToolbarBtnCheck.setOnClickListener {
-//            Log.d("up", uri)
-//            val file = File(uri)
-//            val requestFile = file.asRequestBody("image/png".toMediaTypeOrNull())
-//            val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
-//            val photo = Photo(body, listOf())
-//            val request = UploadRequest(1, "안녕하세요", 1, listOf(photo), listOf())
-//            UploadService(this).tryUploadPosts(request)
+
+            val content = binding.uploadContent.text.toString()
+            val photo = Photo("https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/1.jpg", listOf())
+            val request = UploadRequest(1,content,1, listOf(photo), listOf(),null)
+            UploadService(this).tryUploadPosts(request)
 
             startActivity(Intent(requireContext(), MainActivity::class.java))
             requireActivity().finish()

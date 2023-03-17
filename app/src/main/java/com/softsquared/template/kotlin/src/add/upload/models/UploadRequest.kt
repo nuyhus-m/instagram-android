@@ -5,5 +5,6 @@ data class UploadRequest(
     val content: String,
     val likeShowStatus: Int,
     val photos: List<Photo>,
-    val tagWord: List<String>
+    val tagWord: List<String>,
+    val place: String?
 )

@@ -114,7 +114,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
         binding.profileNickName.text = response.result.nickname
-        if(response.result.story_status == 1) {
+        if(response.result.story_status == 0) {
             binding.profileRing.visibility = View.INVISIBLE
         }
         Glide.with(this)

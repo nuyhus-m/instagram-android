@@ -15,6 +15,9 @@ class Search2Adapter(private val searchList: List<ResultSearch2>, private val ac
     inner class Search2ViewHolder(private val searchItemBinding: ItemSearchBinding) :
         RecyclerView.ViewHolder(searchItemBinding.root) {
             fun bind(search:ResultSearch2) {
+                if(search.story_status == 0) {
+                    searchItemBinding.searchPhotoRing.visibility = View.INVISIBLE
+                }
                 Glide.with(itemView)
                     .load(search.profile_image_url)
                     .into(searchItemBinding.searchPhoto)

@@ -3,10 +3,7 @@ package com.softsquared.template.kotlin.src.add.upload
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.R
 import com.softsquared.template.kotlin.config.ApplicationClass
@@ -17,19 +14,17 @@ import com.softsquared.template.kotlin.src.add.upload.models.Photo
 import com.softsquared.template.kotlin.src.add.upload.models.UploadRequest
 import com.softsquared.template.kotlin.src.add.upload.models.UploadResponse
 import com.softsquared.template.kotlin.src.main.MainActivity
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.File
 
 class UploadFragment : BaseFragment<FragmentUploadBinding>(FragmentUploadBinding::bind, R.layout.fragment_upload), UploadFragmentInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val photoUrl = listOf(
+            "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/1.jpg",
+            "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/2.png",
+            "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/3.png",
+            "https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/4.png"
+        )
         val act = activity as AddActivity
 
         binding.uploadToolbar.navigationIcon = requireContext().getDrawable(R.drawable.ic_back_resize)
@@ -43,10 +38,11 @@ class UploadFragment : BaseFragment<FragmentUploadBinding>(FragmentUploadBinding
 
         binding.uploadToolbarBtnCheck.setOnClickListener {
 
-            val i = ApplicationClass.sSharedPreferences.getInt("gallery", 0)
+            val i = (ApplicationClass.sSharedPreferences.getInt("gallery", 0) + 1) % 4 -1
+
 
             val content = binding.uploadContent.text.toString()
-            val photo = Photo("https://trudylin.s3.ap-northeast-2.amazonaws.com/postPhoto/${i+1}.jpg", listOf())
+            val photo = Photo(photoUrl[i], listOf())
             val request = UploadRequest(1,content,1, listOf(photo), listOf(),null)
             UploadService(this).tryUploadPosts(request)
 

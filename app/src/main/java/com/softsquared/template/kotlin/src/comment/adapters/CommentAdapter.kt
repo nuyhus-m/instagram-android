@@ -65,28 +65,35 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
                 }, 500)
             }
             binding.commentHeartIc.setOnClickListener {
-                if (commentList[holder.adapterPosition].likeOn.id != 0 && commentList[holder.adapterPosition].likeOn.on != 0) {
-                    //좋아요 눌러져 있는 상태
-                    Glide.with(parent)
-                        .load(R.drawable.ic_love)
-                        .into(binding.commentHeartIc)
-                    val newNum = commentList[holder.adapterPosition].likeCount - 1
-                    if (newNum == 0) {
-                        binding.commentHeartNum.visibility = View.INVISIBLE
-                    }else {
-                        binding.commentHeartNum.text = "$newNum"
-                    }
-
-                    CommentService(this).tryPatchCommentLike(commentList[holder.adapterPosition].likeOn.id)
-                }else {
-                    //좋아요 안눌러져 있는 상태
+                if (commentList[holder.adapterPosition].likeOn.id == 0 && commentList[holder.adapterPosition].likeOn.on == 0) {
+                    CommentService(this).tryPostCommentLike(commentList[holder.adapterPosition].commentId)
                     Glide.with(parent)
                         .load(R.drawable.ic_love_fill)
                         .into(binding.commentHeartIc)
                     val newNum = commentList[holder.adapterPosition].likeCount + 1
                     binding.commentHeartNum.text = "$newNum"
-
-                    CommentService(this).tryPostCommentLike(commentList[holder.adapterPosition].commentId)
+                } else {
+                    if (commentList[holder.adapterPosition].likeOn.id != 0 && commentList[holder.adapterPosition].likeOn.on != 0) {
+                        //좋아요 눌러져 있는 상태
+                        CommentService(this).tryPatchCommentLike(commentList[holder.adapterPosition].likeOn.id, false)
+                        Glide.with(parent)
+                            .load(R.drawable.ic_love)
+                            .into(binding.commentHeartIc)
+                        val newNum = commentList[holder.adapterPosition].likeCount - 1
+                        if (newNum == 0) {
+                            binding.commentHeartNum.visibility = View.INVISIBLE
+                        }else {
+                            binding.commentHeartNum.text = "$newNum"
+                        }
+                    }else {
+                        //좋아요 안눌러져 있는 상태
+                        CommentService(this).tryPatchCommentLike(commentList[holder.adapterPosition].likeOn.id, true)
+                        Glide.with(parent)
+                            .load(R.drawable.ic_love_fill)
+                            .into(binding.commentHeartIc)
+                        val newNum = commentList[holder.adapterPosition].likeCount + 1
+                        binding.commentHeartNum.text = "$newNum"
+                    }
                 }
             }
         }

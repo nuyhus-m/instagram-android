@@ -74,10 +74,10 @@ class CommentService(val commentFragmentInterface: CommentFragmentInterface) {
 
         })
     }
-    fun tryPatchCommentLike(likeId: Int) {
+    fun tryPatchCommentLike(likeId: Int, status : Boolean) {
         val commentRetrofitInterface =
             ApplicationClass.sRetrofit.create(CommentRetrofitInterface::class.java)
-        commentRetrofitInterface.patchCommentLike(likeId, false).enqueue(object  : Callback<LikeResponse>{
+        commentRetrofitInterface.patchCommentLike(likeId, status).enqueue(object  : Callback<LikeResponse>{
             override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
                 commentFragmentInterface.onPostCommentLikeSuccess(response.body() as LikeResponse)
             }

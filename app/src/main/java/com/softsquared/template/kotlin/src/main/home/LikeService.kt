@@ -53,10 +53,10 @@ class LikeService(val likeInterface: LikeInterface) {
         })
     }
 
-    fun tryDeleteScrap(scrapId: Int) {
+    fun tryDeleteScrap(scrapId: Int, status: Boolean) {
         val likeRetrofitInterface =
             ApplicationClass.sRetrofit.create(LikeRetrofitInterface::class.java)
-        likeRetrofitInterface.deleteScrap(scrapId, false).enqueue(object : Callback<LikeResponse>{
+        likeRetrofitInterface.deleteScrap(scrapId, status).enqueue(object : Callback<LikeResponse>{
             override fun onResponse(call: Call<LikeResponse>, response: Response<LikeResponse>) {
                 likeInterface.onPostLikeSuccess(response.body() as LikeResponse)
             }

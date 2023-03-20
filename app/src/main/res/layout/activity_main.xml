@@ -44,7 +44,7 @@
                 android:id="@+id/main_btm_profile_img"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:src="@drawable/ex_photo"
+                android:src="@drawable/img_default_profile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

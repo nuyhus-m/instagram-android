@@ -90,8 +90,6 @@
                         android:layout_width="95dp"
                         android:layout_height="95dp"
                         android:src="@drawable/img_ring"
-                        app:civ_border_color="@color/grayForBtn"
-                        app:civ_border_width="1dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -99,9 +97,9 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_img"
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:src="@drawable/ex_photo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/img_default_profile"
                         app:civ_border_color="@color/grayForBtn"
                         app:civ_border_width="1dp"
                         app:layout_constraintBottom_toBottomOf="parent"

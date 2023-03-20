@@ -77,6 +77,9 @@ class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::bind
     }
 
     override fun onGetProfileSuccess(response: ProfileResponse) {
+        if (response.result.story_status == 0) {
+            binding.userRing.visibility = View.INVISIBLE
+        }
         //프로필 닉네임
         binding.userNickName.text = response.result.nickname
         //프로필 사진

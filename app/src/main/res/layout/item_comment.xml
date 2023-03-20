@@ -73,7 +73,7 @@
                 android:textColor="@color/black" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/comment_upload_child"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/comment_text"

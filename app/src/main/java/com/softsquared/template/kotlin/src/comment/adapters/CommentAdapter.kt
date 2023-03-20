@@ -10,14 +10,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.softsquared.template.kotlin.R
+import com.softsquared.template.kotlin.config.ApplicationClass
 import com.softsquared.template.kotlin.databinding.ItemCommentBinding
+import com.softsquared.template.kotlin.src.comment.CommentActivity
 import com.softsquared.template.kotlin.src.comment.CommentFragmentInterface
 import com.softsquared.template.kotlin.src.comment.CommentService
+import com.softsquared.template.kotlin.src.comment.models.AddCommentRequest
 import com.softsquared.template.kotlin.src.comment.models.CommentResponse
 import com.softsquared.template.kotlin.src.comment.models.ResultComment
 import com.softsquared.template.kotlin.src.main.home.models.LikeResponse
 
-class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>(), CommentFragmentInterface {
+class CommentAdapter(private var commentList: List<ResultComment>, private val postCommentsInterface: CommentActivity) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>(), CommentFragmentInterface {
 
     var commentChildList: List<ResultComment> = listOf()
 
@@ -61,7 +64,7 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
                     binding.commentChildNum.visibility = View.GONE
                     binding.commentClildLine.visibility = View.GONE
                     binding.commentChildRv.layoutManager = LinearLayoutManager(parent.context)
-                    binding.commentChildRv.adapter = CommentAdapter(commentChildList)
+                    binding.commentChildRv.adapter = CommentAdapter(commentChildList, postCommentsInterface)
                 }, 500)
             }
             binding.commentHeartIc.setOnClickListener {
@@ -96,6 +99,13 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
                     }
                 }
             }
+            binding.commentUploadChild.setOnClickListener {
+                val editor = ApplicationClass.sSharedPreferences.edit()
+                editor.putInt("groupId", commentList[holder.adapterPosition].commentId)
+                editor.apply()
+
+                postCommentsInterface.postComments(commentList[holder.adapterPosition].profileName)
+            }
         }
     }
 
@@ -121,5 +131,9 @@ class CommentAdapter(private var commentList: List<ResultComment>) : RecyclerVie
 
     override fun onPostCommentLikeFailure(message: String) {
         Log.d("오류", message)
+    }
+
+    interface PostCommentsInterface {
+        fun postComments(profileName: String)
     }
 }

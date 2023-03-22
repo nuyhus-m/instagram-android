@@ -46,7 +46,7 @@ class CommentActivity : BaseActivity<ActivityCommentBinding>(ActivityCommentBind
             .into(binding.commentInputPhoto)
 
         binding.commentBtnUpload.setOnClickListener {
-            val groupId = ApplicationClass.sSharedPreferences.getInt("groupId", -1)
+            val groupId = ApplicationClass.sSharedPreferences.getInt("groupId", 0)
             Log.d("답글 생성", groupId.toString())
             if(binding.commentEt.text != null) {
                 val comment = binding.commentEt.text.toString()
